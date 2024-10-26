@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
-import Button from "../Button/Button";
+import Button from "../../Button/Button";
 
 export const links = [
   {

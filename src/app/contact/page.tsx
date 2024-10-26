@@ -8,7 +8,7 @@ import {
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 px-6 md:px-20 py-12">
-      <h1 className="text-4xl font-bold text-center mb-10  uppercase">
+      <h1 className="text-4xl font-bold md:text-center mb-10  uppercase">
         Contact Us
       </h1>
 

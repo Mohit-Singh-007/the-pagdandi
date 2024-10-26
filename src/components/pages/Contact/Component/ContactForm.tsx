@@ -19,13 +19,18 @@ export default function ContactForm() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
 
+  // baad mai server-actions bnaa do
   const onSubmit = (data: ContactFormData) => {
     console.log("Form Data:", data);
     // Replace with backend call to handle submission
+
+    // if success
+    reset();
   };
 
   return (

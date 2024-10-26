@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
-import Links from "./Links";
-import Logo from "./Logo";
-import Sidebar from "./Sidebar";
+import Links from "./Component/Links";
+import Logo from "./Component/Logo";
+import Sidebar from "./Component/Sidebar";
 
 export default function Navbar() {
   return (
