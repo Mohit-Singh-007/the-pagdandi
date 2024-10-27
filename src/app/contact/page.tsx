@@ -1,9 +1,5 @@
 import ContactForm from "@/components/pages/Contact/Component/ContactForm";
-import {
-  AiOutlinePhone,
-  AiOutlineMail,
-  AiOutlineEnvironment,
-} from "react-icons/ai";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -13,7 +9,6 @@ export default function ContactPage() {
       </h1>
 
       <div className="flex flex-col md:flex-row gap-12">
-        {/* Static Contact Information */}
         <div className="md:w-1/2 space-y-6">
           <h2 className="text-2xl font-semibold ">
             &mdash; Get in Touch &mdash;
@@ -23,20 +18,20 @@ export default function ContactPage() {
             methods:
           </p>
           <div className="flex items-center gap-4">
-            <AiOutlinePhone className="text-2xl" />
+            <Phone className="text-2xl" />
+
             <span>+91 12345 67890</span>
           </div>
           <div className="flex items-center gap-4">
-            <AiOutlineMail className="text-2xl" />
+            <Mail className="text-2xl" />
             <span>info@pagdandi.com</span>
           </div>
           <div className="flex items-center gap-4">
-            <AiOutlineEnvironment className="text-2xl" />
+            <MapPin className="text-2xl" />
             <span>Bhimtal, Uttarakhand, India</span>
           </div>
         </div>
 
-        {/* Client-side Contact Form */}
         <div className="md:w-1/2 bg-gray-50 p-8 shadow-lg rounded-lg">
           <ContactForm />
         </div>

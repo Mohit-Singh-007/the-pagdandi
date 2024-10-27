@@ -3,8 +3,8 @@
 import { LoginFormProps, LoginSchema } from "@/util/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import Link from "next/link";
+import { Github } from "lucide-react";
 
 export default function LoginForm() {
   const {
@@ -83,12 +83,12 @@ export default function LoginForm() {
         {/* Social Login Buttons */}
         <div className="mt-4 space-y-3">
           <button className="flex items-center justify-center space-x-3 bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-700 transition duration-300 w-full">
-            <FaGithub size={20} />
+          <Github />
             <span>Sign in with GitHub</span>
           </button>
 
           <button className="flex items-center justify-center space-x-3 bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300 w-full">
-            <FaGoogle size={20} />
+           
             <span>Sign in with Google</span>
           </button>
         </div>

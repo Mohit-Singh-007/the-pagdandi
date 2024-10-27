@@ -1,20 +1,17 @@
+import { Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
-import { FaInstagram, FaYoutube } from "react-icons/fa"; // Importing React Icons
+import Link from "next/link";
 
 export default function About() {
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Main Section */}
       <section className="flex flex-col md:flex-row items-start p-10 md:p-24 space-y-10 md:space-y-0">
-        {/* Left Side: Text */}
         <div className="flex-1 space-y-6">
-          <h1 className="text-6xl font-bold leading-tight text-gray-800">
-            Exploring Life’s{" "}
-            <span className="text-[#E9C46A]">Unbeaten Paths</span>
+          <h1 className="text-6xl font-bold text-gray-800">
+            Exploring Life’s
+            <span className="text-[#E9C46A]"> Unbeaten Paths</span>
           </h1>
           <div className="flex flex-col md:flex-row items-start space-x-8">
-            {" "}
-            {/* Added flex container for text and image */}
             <div className="flex-1">
               <p className="text-xl font-semibold text-gray-700">Mohit Singh</p>
               <p className="text-gray-600 leading-relaxed mt-4">
@@ -27,24 +24,24 @@ export default function About() {
                 along the way.
               </p>
               <div className="flex space-x-6 pt-5">
-                <a
+                <Link
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-yellow-600 hover:text-yellow-500 transition"
                 >
-                  <FaInstagram className="w-5 h-5" />
+                  <Instagram className="w-5 h-5" />
                   <span>Instagram</span>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-red-600 hover:text-red-500 transition"
                 >
-                  <FaYoutube className="w-5 h-5" />
+                  <Youtube className="w-5 h-5" />
                   <span>YouTube</span>
-                </a>
+                </Link>
               </div>
             </div>
             {/* Right Side: Image */}
@@ -58,7 +55,7 @@ export default function About() {
                 />
                 <blockquote className="absolute bottom-0 left-0 p-4 bg-white bg-opacity-80 rounded-lg shadow-md">
                   <p className="text-lg italic text-gray-700">
-                    &ldquo;The journey is the destination.&ldquo;
+                    &ldquo;The journey is the destination.&rdquo;
                   </p>
                   <footer className="mt-2 text-sm text-gray-500">
                     – Mohit Singh

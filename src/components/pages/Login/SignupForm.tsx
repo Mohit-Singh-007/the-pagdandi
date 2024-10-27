@@ -3,8 +3,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpFormProps, SignUpSchema } from "@/util/SignupSchema";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import Link from "next/link";
+import { Github } from "lucide-react";
 
 export default function SignUpForm() {
   const {
@@ -37,7 +37,7 @@ export default function SignUpForm() {
               type="email"
               placeholder="Email"
               {...register("email")}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400"
               autoComplete="email"
             />
             {errors.email && (
@@ -53,7 +53,7 @@ export default function SignUpForm() {
               type="password"
               placeholder="Password"
               {...register("password")}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400"
               autoComplete="new-password"
             />
             {errors.password && (
@@ -69,7 +69,7 @@ export default function SignUpForm() {
               type="password"
               placeholder="Confirm Password"
               {...register("confirmPassword")}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400"
               autoComplete="new-password"
             />
             {errors.confirmPassword && (
@@ -94,15 +94,13 @@ export default function SignUpForm() {
           <hr className="w-1/3 border-gray-300" />
         </div>
 
-        {/* Social Login Buttons */}
         <div className="mt-4 space-y-3">
-          <button className="flex items-center justify-center space-x-3 bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-700 transition duration-300 w-full">
-            <FaGithub size={20} />
+          <button className="flex items-center justify-center bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-700 transition duration-300 w-full">
+            <Github size={20} />
             <span>Sign up with GitHub</span>
           </button>
 
-          <button className="flex items-center justify-center space-x-3 bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300 w-full">
-            <FaGoogle size={20} />
+          <button className="flex items-center justify-center bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300 w-full">
             <span>Sign up with Google</span>
           </button>
         </div>
