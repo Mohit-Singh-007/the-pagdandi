@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
-import Button from "../../Button/Button";
 
 export const links = [
   {
@@ -32,7 +31,7 @@ export default function Links() {
 
   return (
     <>
-      <div className=" md:flex items-center justify-between gap-5 hidden ">
+      <div className=" md:flex items-center justify-center gap-5 hidden ">
         {links.map((link) => (
           <Link
             href={link.href}
@@ -46,8 +45,8 @@ export default function Links() {
           </Link>
         ))}
       </div>
+
       <Sidebar />
-      <Button />
     </>
   );
 }

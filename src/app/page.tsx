@@ -2,7 +2,7 @@ export default function Page() {
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-50 ">
       <section className="py-6 w-full text-center">
-        <h1 className="text-2xl font-bold md:text-4xl">
+        <h1 className="text-2xl font-bold md:text-4xl whitespace-nowrap">
           &mdash;Welcome to <span className="text-[#E9C46A]">Pagdandi</span>
           &mdash;
         </h1>

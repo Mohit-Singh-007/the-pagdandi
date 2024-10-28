@@ -5,3 +5,8 @@
 *::selection {
   background: #ffeb55;
 }
+
+* {
+  padding: 0;
+  margin: 0;
+}

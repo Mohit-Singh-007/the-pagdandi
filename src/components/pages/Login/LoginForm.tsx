@@ -83,12 +83,11 @@ export default function LoginForm() {
         {/* Social Login Buttons */}
         <div className="mt-4 space-y-3">
           <button className="flex items-center justify-center space-x-3 bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-700 transition duration-300 w-full">
-          <Github />
+            <Github />
             <span>Sign in with GitHub</span>
           </button>
 
           <button className="flex items-center justify-center space-x-3 bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300 w-full">
-           
             <span>Sign in with Google</span>
           </button>
         </div>

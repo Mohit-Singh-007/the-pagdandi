@@ -33,12 +33,6 @@ export default function Sidebar() {
           ))}
         </div>
       )}
-      <Link
-        href="/login"
-        className="px-3 py-2 bg-[#fadd76] text-gray-800 text-sm font-medium rounded-md"
-      >
-        Sign In
-      </Link>
     </div>
   );
 }
