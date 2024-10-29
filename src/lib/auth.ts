@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import { saveUserToDB } from "@/db/data-service";
+import { supabase } from "./supabase";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -18,7 +20,45 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+
   callbacks: {
+    async signIn({ user, account }) {
+      const { email, name, role } = user;
+
+      try {
+        // Check if user already exists in Supabase
+        const { data: existingUser, error: fetchError } = await supabase
+          .from("users")
+          .select("*")
+          .eq("email", email)
+          .maybeSingle();
+
+        if (fetchError) {
+          console.error("Error fetching user:", fetchError);
+          return false; // Deny access if there is an issue fetching
+        }
+
+        if (!existingUser) {
+          // If user doesn't exist, insert them into the 'users' table
+          const { error: insertError } = await supabase.from("users").insert({
+            email,
+            name,
+            role,
+          });
+
+          if (insertError) {
+            console.error("Error inserting new user:", insertError);
+            return false; // Deny access if insert fails
+          }
+        }
+
+        return true; // Allow sign-in if all is good
+      } catch (err) {
+        console.error("Unexpected error:", err);
+        return false; // Deny access on any other error
+      }
+    },
+
     jwt({ user, token }) {
       if (user) {
         token.role = user.role;
