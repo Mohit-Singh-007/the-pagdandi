@@ -1,10 +1,11 @@
 import bcrypt from "bcryptjs";
 import { supabase } from "../lib/supabase";
+import { User } from "@supabase/supabase-js";
 
 export async function getUsers(email) {
   const { data, error } = await supabase
     .from("users")
-    .select("email")
+    .select("email , role")
     .eq("email", email)
     .single();
 
