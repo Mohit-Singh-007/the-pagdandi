@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpFormProps, SignUpSchema } from "@/util/SignupSchema";
+import { registerUser } from "@/lib/action";
 
 export default function Form() {
   const {
@@ -11,10 +12,15 @@ export default function Form() {
     resolver: zodResolver(SignUpSchema),
   });
 
-  const onSubmit = (data: SignUpFormProps) => {
-    console.log(data);
-    // Add your sign-up logic here (e.g., API call)
+  const onSubmit = async (data: SignUpFormProps) => {
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("confirmPassword", data.confirmPassword);
+
+    await registerUser(formData);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-5">
       {/* Email Input */}

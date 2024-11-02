@@ -40,6 +40,7 @@ export default function LoginForm() {
               id="email"
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               autoComplete="email"
+              name="email"
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-500">
@@ -57,6 +58,7 @@ export default function LoginForm() {
               id="password"
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               autoComplete="current-password"
+              name="password"
             />
             {errors.password && (
               <p className="mt-1 text-sm text-red-500">
