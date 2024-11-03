@@ -5,8 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { Github } from "lucide-react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { loginUser } from "@/lib/action";
 
 export default function LoginForm() {
+  const router = useRouter();
   const {
     register,
     reset,
@@ -16,9 +20,24 @@ export default function LoginForm() {
     resolver: zodResolver(LoginSchema),
   });
 
-  function onSubmit(data: LoginFormProps) {
-    console.log(data);
-    reset();
+  async function onSubmit(data: LoginFormProps) {
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
+    try {
+      const res = await loginUser(formData);
+
+      if (res.error) {
+        toast.error(res.error);
+      } else {
+        toast.success("Logged in successfully!");
+        reset();
+        router.push("/"); // Redirect after successful login
+      }
+    } catch (error) {
+      toast.error("An error occurred during login.");
+    }
   }
 
   return (

@@ -4,7 +4,7 @@ import { supabase } from "../lib/supabase";
 export async function getUsers(email) {
   const { data, error } = await supabase
     .from("users")
-    .select("email, role")
+    .select("email, role, password")
     .eq("email", email)
     .single();
 
@@ -48,4 +48,37 @@ export async function verifyUser(email, password) {
   }
 
   return user;
+}
+
+export async function loginUser(email, password) {
+  console.log(email);
+  // Fetch user with matching email
+  const { data, error } = await supabase
+    .from("users")
+    .select("email, password")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Login error:", error.message);
+    return { error: "Invalid credentials" };
+  }
+
+  if (!data) {
+    // No user found with the provided email
+    console.log(`No user found for email: ${email}`);
+    return { error: "Invalid credentials" };
+  }
+
+  console.log(`Fetched user: ${JSON.stringify(data)}`);
+
+  // Ensure we have a hashed password in data
+  const isPasswordValid = await bcrypt.compare(password, data.password);
+  console.log(`Password valid: ${isPasswordValid}`);
+
+  if (!isPasswordValid) {
+    return { error: "Invalid credentials" };
+  }
+
+  return { message: "Login successful", user: { email: data.email } };
 }

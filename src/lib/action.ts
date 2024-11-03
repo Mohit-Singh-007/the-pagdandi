@@ -1,7 +1,8 @@
 "use server";
 
 import { createUser, getUsers } from "@/db/data-service";
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut } from "@/lib/auth";
+import { compare } from "bcryptjs";
 
 async function signInAction(): Promise<void> {
   const res = await signIn("google", { redirect: false });
@@ -36,4 +37,29 @@ export const registerUser = async (formdata: FormData) => {
   }
 
   return { message: "Registration successful" };
+};
+
+export const loginUser = async (formdata: FormData) => {
+  const email = formdata.get("email") as string;
+  const password = formdata.get("password") as string;
+
+  const user = await getUsers(email);
+
+  if (!user || !user.password) {
+    return { error: "Invalid credentials" };
+  }
+
+  const isValidPassword = await compare(password, user.password);
+
+  if (!isValidPassword) {
+    return { error: "Invalid credentials" };
+  }
+
+  await signIn("credentials", {
+    email,
+    password,
+    redirect: false,
+  });
+
+  return { message: "Logged in Successfully" };
 };
