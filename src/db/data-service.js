@@ -1,18 +1,18 @@
 import bcrypt from "bcryptjs";
 import { supabase } from "../lib/supabase";
-import { User } from "@supabase/supabase-js";
 
 export async function getUsers(email) {
   const { data, error } = await supabase
     .from("users")
-    .select("email , role")
+    .select("email, role")
     .eq("email", email)
     .single();
 
   if (error) {
-    console.error("Error in getUsers(email)");
+    console.error("Error in getUsers(email):", error.message);
     return null;
   }
+
   return data;
 }
 
@@ -27,12 +27,10 @@ export async function createUser({ email, password, provider, role }) {
     .insert({ email, password: hashedPassword, provider, role: "user" });
 
   if (error) {
-    console.error("Error creating user:", error.message);
-    return null;
+    return { error: error.message };
   }
 
-  console.log("User created successfully:", data);
-  return data; // Returns created user data
+  return { message: "User created successfully", user: data };
 }
 
 export async function verifyUser(email, password) {
@@ -49,5 +47,5 @@ export async function verifyUser(email, password) {
     throw new Error("Invalid password");
   }
 
-  return user; // Return the user data if verification is successful
+  return user;
 }

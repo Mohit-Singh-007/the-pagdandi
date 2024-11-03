@@ -9,6 +9,7 @@ import { Github } from "lucide-react";
 export default function LoginForm() {
   const {
     register,
+    reset,
     formState: { errors, isSubmitting },
     handleSubmit,
   } = useForm<LoginFormProps>({
@@ -17,6 +18,7 @@ export default function LoginForm() {
 
   function onSubmit(data: LoginFormProps) {
     console.log(data);
+    reset();
   }
 
   return (

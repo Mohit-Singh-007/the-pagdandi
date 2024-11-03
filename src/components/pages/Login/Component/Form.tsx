@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpFormProps, SignUpSchema } from "@/util/SignupSchema";
 import { registerUser } from "@/lib/action";
+import { toast } from "react-toastify";
 
 export default function Form() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<SignUpFormProps>({
     resolver: zodResolver(SignUpSchema),
@@ -18,7 +20,13 @@ export default function Form() {
     formData.append("password", data.password);
     formData.append("confirmPassword", data.confirmPassword);
 
-    await registerUser(formData);
+    const res = await registerUser(formData);
+    if (res.error) {
+      toast.error(res.error);
+    } else {
+      toast.success(res.message);
+    }
+    reset();
   };
 
   return (
