@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 
 export default async function Navbar() {
   const session = await auth();
+  console.log(session);
 
   return (
     <nav className=" border-b flex p-4 gap-20 items-center justify-between">

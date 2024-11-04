@@ -4,10 +4,10 @@ import { LoginFormProps, LoginSchema } from "@/util/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { Github } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/lib/action";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -105,12 +105,10 @@ export default function LoginForm() {
 
         {/* Social Login Buttons */}
         <div className="mt-4 space-y-3">
-          <button className="flex items-center justify-center space-x-3 bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-700 transition duration-300 w-full">
-            <Github />
-            <span>Sign in with GitHub</span>
-          </button>
-
-          <button className="flex items-center justify-center space-x-3 bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300 w-full">
+          <button
+            onClick={() => signIn("google", { redirectTo: "/" })}
+            className="flex items-center justify-center space-x-3 bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300 w-full"
+          >
             <span>Sign in with Google</span>
           </button>
         </div>

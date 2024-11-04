@@ -4,12 +4,11 @@ import { supabase } from "../lib/supabase";
 export async function getUsers(email) {
   const { data, error } = await supabase
     .from("users")
-    .select("email, role, password")
+    .select("email , role , password")
     .eq("email", email)
     .single();
 
   if (error) {
-    console.error("Error in getUsers(email):", error.message);
     return null;
   }
 

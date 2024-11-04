@@ -4,7 +4,7 @@ import { createUser, getUsers } from "@/db/data-service";
 import { signIn, signOut } from "@/lib/auth";
 import { compare } from "bcryptjs";
 
-async function signInAction(): Promise<void> {
+export async function signInAction(): Promise<void> {
   const res = await signIn("google", { redirect: false });
   if (res?.error) {
     console.error("Sign-in error:", res.error);
@@ -13,7 +13,7 @@ async function signInAction(): Promise<void> {
   }
 }
 
-async function signOutAction(): Promise<void> {
+export async function signOutAction(): Promise<void> {
   await signOut({ redirect: false });
   console.log("Signed out successfully");
 }

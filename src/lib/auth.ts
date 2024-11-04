@@ -50,36 +50,38 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       try {
         const existingUser: UserType | null = await getUsers(user.email);
 
-        if (!existingUser) {
+        // If the user already exists, assign their role
+        if (existingUser) {
+          user.role = existingUser.role as string; // This should correctly assign the role
+        } else {
           await createUser({
             email: user.email,
             password: null,
             provider: "Google",
             role: "user",
           });
+          user.role = "user";
         }
 
-        return true;
+        return true; // Return true to indicate successful sign-in
       } catch (error) {
-        return false;
+        console.error("Sign-in error:", error); // Log the error for debugging
+        return false; // Return false on error
       }
     },
-
     async jwt({ user, token }) {
       if (user) {
-        token.role = user.role ?? "user";
-        token.email = user.email ?? "";
+        token.role = user.role; // Make sure token.role matches user.role here
       } else if (!token.role && token.email) {
-        const dbUser: UserType | null = await getUsers(token.email);
+        const dbUser = await getUsers(token.email);
         if (dbUser) {
-          token.role = dbUser.role ?? "user";
+          token.role = dbUser.role; // Ensure role is set from DB
         }
       }
       return token;
     },
-
     async session({ session, token }) {
-      session.user.role = token.role ?? "user";
+      session.user.role = token.role; // Explicitly set session user role from token
       return session;
     },
   },
