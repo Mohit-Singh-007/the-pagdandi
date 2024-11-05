@@ -65,7 +65,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         return true; // Return true to indicate successful sign-in
       } catch (error) {
-        console.error("Sign-in error:", error); // Log the error for debugging
         return false; // Return false on error
       }
     },
@@ -81,7 +80,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      session.user.role = token.role; // Explicitly set session user role from token
+      if (token) {
+        const dbUser = await getUsers(token.email); // Fetch user data from the database
+        if (dbUser) {
+          session.user.role = dbUser.role || "user"; // Update role from database
+        }
+      }
       return session;
     },
   },
