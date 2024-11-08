@@ -77,3 +77,27 @@ export async function loginUser(email, password) {
 
   return { message: "Login successful", user: { email: data.email } };
 }
+
+export async function getAllBlogs() {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("id , title , slug , description , author_id , created_at");
+
+  console.log(data);
+
+  if (error) {
+    return { error: "Not found" };
+  }
+
+  return data;
+}
+
+export async function deletePost(id) {
+  const { error } = await supabase.from("posts").delete().eq(" id ", id);
+  if (error) {
+    console.error(error.message);
+    return { status: "error", message: "Error deleting posts" };
+  }
+
+  return { status: "success", message: "Post deleted successfully" };
+}
