@@ -1,7 +1,42 @@
 import MyProfile from "@/components/pages/About/MyProfile";
 import { Instagram, Youtube } from "lucide-react";
-import Image from "next/image";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn more about Pagdandi, our mission to inspire and support personal growth, productivity, and self-improvement through insightful articles and resources.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "About Pagdandi | Your Path to Growth and Learning",
+    description:
+      "Discover the story behind Pagdandi and how we're helping individuals improve their productivity, learning, and self-development with valuable insights and practical tips.",
+    url: "https://yourdomain.com/about",
+    type: "website",
+    images: [
+      {
+        url: "https://yourdomain.com/about-image.jpg", // Add a relevant image URL
+        width: 1200,
+        height: 630,
+        alt: "About Pagdandi - Growth and Learning",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourTwitterHandle",
+    title: "About Pagdandi | Your Path to Growth and Learning",
+    description:
+      "Learn more about Pagdandi and our mission to inspire personal growth, productivity, and self-improvement.",
+    images: "https://yourdomain.com/about-image.jpg",
+  },
+  keywords:
+    "about Pagdandi, personal growth, productivity, self-improvement, learning, blog platform",
+};
 
 export default function About() {
   return (

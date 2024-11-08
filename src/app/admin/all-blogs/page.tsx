@@ -2,7 +2,12 @@ import BlogsPage from "@/components/pages/Admin/BlogsPage";
 import { getAllBlogs } from "@/db/data-service";
 import { auth } from "@/lib/auth";
 import { Blogs } from "@/types/db";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "All-Blogs",
+};
 
 type BlogResponse = Blogs[] | { error: string };
 

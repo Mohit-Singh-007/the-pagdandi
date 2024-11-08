@@ -1,6 +1,9 @@
-// app/unauthorized/page.js (or .tsx)
+import { Metadata } from "next";
 import Link from "next/link";
-import React from "react";
+
+export const metadata: Metadata = {
+  title: "Unauthorized",
+};
 
 export default function Unauthorized() {
   return (

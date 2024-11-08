@@ -1,6 +1,15 @@
 import { auth } from "@/lib/auth";
-import Link from "next/link";
+import { Metadata } from "next";
+
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Admin",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default async function page() {
   const session = await auth();
@@ -8,7 +17,5 @@ export default async function page() {
   if (session?.user.role !== "admin") {
     redirect("/unauthorized");
   }
-  return <div>
-    
-  </div>;
+  return <div>admin page</div>;
 }

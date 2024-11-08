@@ -1,5 +1,41 @@
 import ContactForm from "@/components/pages/Contact/Component/ContactForm";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with the Pagdandi team. Whether you have a question, feedback, or collaboration opportunity, we are here to help and connect with you.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Contact Us | Pagdandi",
+    description:
+      "Reach out to Pagdandi for any inquiries, feedback, or collaboration opportunities. Our team is ready to assist you.",
+    url: "https://yourdomain.com/contact",
+    type: "website",
+    images: [
+      {
+        url: "https://yourdomain.com/contact-image.jpg", // Add a relevant image URL, like a contact form image
+        width: 1200,
+        height: 630,
+        alt: "Contact Pagdandi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourTwitterHandle",
+    title: "Contact Us | Pagdandi",
+    description:
+      "Have questions or feedback? Contact Pagdandi's team. We are happy to connect with you.",
+    images: "https://yourdomain.com/contact-image.jpg",
+  },
+  keywords:
+    "contact Pagdandi, contact us, feedback, inquiries, customer support, collaboration",
+};
 
 export default function ContactPage() {
   return (

@@ -1,6 +1,11 @@
 import BlogPostForm from "@/components/pages/Admin/BlogPostForm";
 import { auth } from "@/lib/auth";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Create-Blogs",
+};
 
 export default async function Page() {
   const session = await auth();
