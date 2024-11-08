@@ -101,3 +101,7 @@ export async function deletePost(id) {
 
   return { status: "success", message: "Post deleted successfully" };
 }
+
+export async function addPost() {
+  
+}

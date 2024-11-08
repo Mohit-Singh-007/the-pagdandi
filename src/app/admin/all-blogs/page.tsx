@@ -1,23 +1,19 @@
 import BlogsPage from "@/components/pages/Admin/BlogsPage";
-import { deletePost, getAllBlogs } from "@/db/data-service";
+import { getAllBlogs } from "@/db/data-service";
+import { auth } from "@/lib/auth";
 import { Blogs } from "@/types/db";
-import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 type BlogResponse = Blogs[] | { error: string };
 
 export default async function page() {
-  const blogs: BlogResponse = await getAllBlogs();
+  const session = await auth();
 
-  async function onEdit() {}
-
-  async function onDelete(postId: number) {
-    try {
-      await deletePost(postId);
-      toast.success("Post deleted successfully");
-    } catch (error: any) {
-      toast.error(error.message);
-    }
+  if (!session || session?.user.role !== "admin") {
+    redirect("/login");
   }
+
+  const blogs: BlogResponse = await getAllBlogs();
 
   if ("error" in blogs) {
     console.error(blogs.error);
