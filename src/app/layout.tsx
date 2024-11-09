@@ -5,6 +5,7 @@ import Navbar from "@/components/ui/Navbar/Navbar";
 import Footer from "@/components/ui/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SessionProvider } from "next-auth/react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -58,10 +59,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <Navbar />
-        <div>{children}</div>
-        <Footer />
-        <ToastContainer position="top-right" autoClose={3000} />
+        <SessionProvider>
+          <Navbar />
+          <div>{children}</div>
+          <Footer />
+          <ToastContainer position="top-right" autoClose={3000} />
+        </SessionProvider>
       </body>
     </html>
   );

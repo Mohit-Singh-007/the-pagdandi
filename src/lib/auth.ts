@@ -1,44 +1,10 @@
-import NextAuth, { User } from "next-auth";
+import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { createUser, getUsers } from "@/db/data-service";
 import { UserType } from "@/types/db";
-import Credentials from "next-auth/providers/credentials";
-import { compare } from "bcryptjs";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    Credentials({
-      name: "credentials",
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
-      },
-
-      async authorize(credentials) {
-        const email = credentials.email as string;
-        const password = credentials.password as string;
-
-        const user: UserType | null = await getUsers(email);
-        if (!user || !user.password) {
-          return null;
-        }
-
-        const isValidPassword = await compare(
-          password as string,
-          user.password as string
-        );
-        if (!isValidPassword) {
-          return null;
-        }
-
-        const userData = {
-          email: user.email,
-          role: user.role ?? "user",
-        };
-
-        return userData;
-      },
-    }),
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
@@ -55,41 +21,36 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       try {
         const existingUser: UserType | null = await getUsers(user.email);
 
-        // If the user already exists, assign their role
         if (existingUser) {
-          user.role = existingUser.role as string; // This should correctly assign the role
+          user.role = existingUser.role as string;
         } else {
           await createUser({
             email: user.email,
-            password: null,
             provider: "Google",
             role: "user",
           });
           user.role = "user";
         }
 
-        return true; // Return true to indicate successful sign-in
+        return true;
       } catch (error) {
-        return false; // Return false on error
+        return false;
       }
     },
+
     async jwt({ user, token }) {
       if (user) {
-        token.role = user.role; // Make sure token.role matches user.role here
-      } else if (!token.role && token.email) {
-        const dbUser = await getUsers(token.email);
-        if (dbUser) {
-          token.role = dbUser.role; // Ensure role is set from DB
-        }
+        token.role = user.role;
       }
       return token;
     },
+
     async session({ session, token }) {
-      if (token) {
-        const dbUser = await getUsers(token.email); // Fetch user data from the database
-        if (dbUser) {
-          session.user.role = dbUser.role || "user"; // Update role from database
-        }
+      const dbUser = await getUsers(token.email);
+      if (dbUser) {
+        session.user.role = dbUser.role || "user";
+      } else {
+        session.user.role = token.role || "user";
       }
       return session;
     },

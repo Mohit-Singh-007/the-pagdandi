@@ -4,26 +4,11 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
 
 export const links = [
-  {
-    label: "HOME",
-    href: "/",
-  },
-  {
-    label: "ABOUT",
-    href: "/about",
-  },
-  {
-    label: "BLOGS",
-    href: "/blogs",
-  },
-  {
-    label: "TEAM",
-    href: "/team",
-  },
-  {
-    label: "CONTACT",
-    href: "/contact",
-  },
+  { label: "HOME", href: "/" },
+  { label: "ABOUT", href: "/about" },
+  { label: "BLOGS", href: "/blogs" },
+  { label: "POETS", href: "/poets" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export default function Links() {
@@ -31,21 +16,22 @@ export default function Links() {
 
   return (
     <>
-      <div className=" md:flex items-center justify-center gap-5 hidden ">
+      {/* Desktop links */}
+      <div className="hidden md:flex items-center justify-center gap-5 w-full">
         {links.map((link) => (
           <Link
             href={link.href}
             key={link.label}
-            className={`text-sm hover:text-sm hover:text-[#E9C46A]  transition duration-150 ease-in ${
-              pathName === link.href &&
-              "border-b-2 border-b-[#E9C46A]  hover:text-black"
-            } `}
+            className={`text-white text-sm transition duration-150 ease-in hover:text-[#E9C46A] ${
+              pathName === link.href ? "border-b-2 border-b-[#E9C46A]" : ""
+            }`}
           >
             {link.label}
           </Link>
         ))}
       </div>
 
+      {/* Mobile Sidebar */}
       <Sidebar />
     </>
   );

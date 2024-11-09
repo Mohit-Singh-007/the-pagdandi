@@ -10,23 +10,18 @@ export default async function Navbar() {
   console.log(session);
 
   return (
-    <nav className=" border-b flex p-4 gap-20 items-center justify-between">
+    <nav className="border-b flex p-4 gap-20 items-center justify-between bg-[#000]">
       <Logo />
       <Links />
 
-      <div className="flex items-center gap-2 justify-around">
-        {session?.user.image ? (
+      <div className="flex items-center gap-2 justify-between md:pr-4">
+        {session?.user.image && (
           <img
             src={session.user.image}
             alt={session.user.name as string}
             className="h-8 rounded-full cursor-pointer"
             referrerPolicy="no-referrer"
           />
-        ) : (
-          <div className="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center">
-            {/* Default placeholder or icon */}
-            <span className="text-gray-500">?</span>
-          </div>
         )}
         {session?.user.role === "admin" && (
           <Link
@@ -37,8 +32,6 @@ export default async function Navbar() {
           </Link>
         )}
       </div>
-
-      <Button />
     </nav>
   );
 }
