@@ -16,9 +16,9 @@ export async function getUsers(email) {
 }
 
 export async function createUser({ email, provider, role }) {
-  const { data, error } = await supabase
-    .from("users")
-    .insert({ email, provider, role: "user" });
+  const { data, error } = await supabase.from("users").insert[
+    { email, provider, role: "user" }
+  ];
 
   if (error) {
     return { error: error.message };

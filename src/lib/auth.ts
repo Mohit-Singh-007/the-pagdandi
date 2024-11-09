@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { createUser, getUsers } from "@/db/data-service";
-import { UserType } from "@/types/db";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -11,27 +10,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
 
-  session: {
-    maxAge: 24 * 60 * 60,
-    updateAge: 24 * 60 * 60,
-  },
-
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user }) {
       try {
-        const existingUser: UserType | null = await getUsers(user.email);
+        const existingUser = await getUsers(user.email);
 
         if (existingUser) {
-          user.role = existingUser.role as string;
+          user.role = existingUser.role;
         } else {
+          user.role = "user";
           await createUser({
             email: user.email,
             provider: "Google",
-            role: "user",
+            role: user.role,
           });
-          user.role = "user";
         }
-
         return true;
       } catch (error) {
         return false;
@@ -41,16 +34,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ user, token }) {
       if (user) {
         token.role = user.role;
+        token.email = user.email;
       }
       return token;
     },
 
     async session({ session, token }) {
-      const dbUser = await getUsers(token.email);
-      if (dbUser) {
-        session.user.role = dbUser.role || "user";
-      } else {
-        session.user.role = token.role || "user";
+      if (token.role) {
+        session.user.role = token.role;
       }
       return session;
     },
