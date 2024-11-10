@@ -24,6 +24,20 @@ export async function deleteBlog(blogId: number) {
   revalidatePath("/admin/all-blogs");
 }
 
+export async function getAllBlogs() {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("id , title , slug , description , author_id , created_at")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    return { error: "Not found" };
+  }
+
+  revalidatePath("/blogs");
+  return data;
+}
+
 export async function getUserById(userId: number) {
   const { data, error } = await supabase
     .from("posts")

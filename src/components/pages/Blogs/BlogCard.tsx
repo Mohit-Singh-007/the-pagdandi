@@ -1,9 +1,9 @@
-import { getAllBlogs } from "@/db/data-service";
+import { getAllBlogs } from "@/lib/action";
 import { Blogs } from "@/types/db";
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function BlogCard() {
   const blogsData: Blogs[] | { error: string } = await getAllBlogs();
@@ -12,12 +12,9 @@ export default async function BlogCard() {
     return null;
   }
 
-  const sortedBlogs = [...blogsData].reverse();
-
   return (
     <div className="flex flex-wrap justify-center gap-8 p-4 bg-white">
-      {sortedBlogs.map((blog) => {
-        const formattedDate = new Date(blog.created_at).toLocaleDateString();
+      {blogsData.map((blog) => {
         return (
           <div
             key={blog.id}
@@ -44,7 +41,8 @@ export default async function BlogCard() {
                 href={`/user/${blog.author_id}`}
                 className="text-xs mt-1 block text-gray-500"
               >
-                By {blog.author_id} • {formattedDate}
+                By {blog.author_id} •{" "}
+                {new Date(blog.created_at).toLocaleDateString()}
               </Link>
               <div className="mt-2 flex justify-between items-center text-xs text-yellow-600">
                 <span className="px-2 py-1 bg-yellow-100 rounded-full">

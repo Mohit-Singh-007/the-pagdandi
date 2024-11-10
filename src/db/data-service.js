@@ -28,18 +28,18 @@ export async function createUser({ email, provider, role }) {
   return { message: "User created successfully", user: data };
 }
 
-export async function getAllBlogs() {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("id , title , slug , description , author_id , created_at");
+// export async function getAllBlogs() {
+//   const { data, error } = await supabase
+//     .from("posts")
+//     .select("id , title , slug , description , author_id , created_at");
 
-  if (error) {
-    return { error: "Not found" };
-  }
+//   if (error) {
+//     return { error: "Not found" };
+//   }
 
-  revalidatePath("/blogs");
-  return data;
-}
+//   revalidatePath("/blogs");
+//   return data;
+// }
 
 export async function getUserById(userId) {
   const { data, error } = await supabase
