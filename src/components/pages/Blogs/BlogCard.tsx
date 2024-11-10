@@ -71,8 +71,8 @@ export default function BlogCard() {
           className="max-w-sm w-60 rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
         >
           <img
-            src={blog.images[0].url}
-            alt={blog.images[0].alt}
+            src=""
+            alt=""
             className="w-full h-32 object-cover"
           />
           <div className="p-4">

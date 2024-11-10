@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className="min-h-screen flex flex-col items-center">
       <section className="py-6 w-full text-center">

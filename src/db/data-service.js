@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { supabase } from "../lib/supabase";
 
 export async function getUsers(email) {
@@ -41,14 +42,15 @@ export async function getAllBlogs() {
   return data;
 }
 
-export async function deletePost(id) {
-  const { error } = await supabase.from("posts").delete().eq(" id ", id);
-  if (error) {
-    console.error(error.message);
-    return { status: "error", message: "Error deleting posts" };
-  }
+export async function getUserById(userId) {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("*")
+    .eq("author_id", userId);
 
-  return { status: "success", message: "Post deleted successfully" };
+  if (error) throw new Error("User can't be fetched");
+
+  return data;
 }
 
 export async function addPost() {}

@@ -1,8 +1,9 @@
 "use client";
 
-import { Edit, Trash } from "lucide-react";
+import { Edit } from "lucide-react";
 import { Blogs } from "@/types/db";
 import Link from "next/link";
+import DeleteBlog from "./features/DeleteBlog";
 
 interface BlogRowProps {
   post: Blogs;
@@ -19,19 +20,12 @@ const BlogRow = ({ post }: BlogRowProps) => {
       <td className="py-2 px-3 text-center w-[100px]">
         <div className="flex items-center justify-end space-x-2">
           <Link
-           href={`/admin/all-blogs/edit/${post.id}`}
+            href={`/admin/all-blogs/edit/${post.id}`}
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
           >
             <Edit className="h-4 w-4" />
           </Link>
-          <button
-            onClick={() => {
-              // Handle delete action
-            }}
-            className="text-gray-500 hover:text-gray-700 focus:outline-none"
-          >
-            <Trash className="h-4 w-4" />
-          </button>
+          <DeleteBlog blogId={post.id} />
         </div>
       </td>
     </tr>
