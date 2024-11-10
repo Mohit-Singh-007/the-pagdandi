@@ -33,12 +33,11 @@ export async function getAllBlogs() {
     .from("posts")
     .select("id , title , slug , description , author_id , created_at");
 
-  console.log(data);
-
   if (error) {
     return { error: "Not found" };
   }
 
+  revalidatePath("/blogs");
   return data;
 }
 

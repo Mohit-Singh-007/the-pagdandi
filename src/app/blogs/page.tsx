@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <div>
       <BlogCard />
-      <BlogCard />
+      
     </div>
   );
 }
