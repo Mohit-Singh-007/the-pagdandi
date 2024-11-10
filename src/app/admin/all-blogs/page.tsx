@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { Blogs } from "@/types/db";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "All-Blogs",
@@ -12,22 +13,17 @@ export const metadata: Metadata = {
 type BlogResponse = Blogs[] | { error: string };
 
 export default async function page() {
-  const session = await auth();
-
-  if (!session || session?.user.role !== "admin") {
-    redirect("/login");
-  }
-
   const blogs: BlogResponse = await getAllBlogs();
 
   if ("error" in blogs) {
-    console.error(blogs.error);
     return;
   }
 
   return (
     <div>
-      <BlogsPage posts={blogs} />
+      <Suspense fallback={<p>Loading...</p>}>
+        <BlogsPage posts={blogs} />
+      </Suspense>
     </div>
   );
 }

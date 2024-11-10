@@ -31,18 +31,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
     },
 
-    async jwt({ user, token }) {
-      if (user) {
-        token.role = user.role;
-        token.email = user.email;
-      }
-      return token;
-    },
-
     async session({ session, token }) {
-      if (token.role) {
-        session.user.role = token.role;
-      }
+      const user = await getUsers(session.user.email);
+      session.user.id = user?.id;
+      session.user.role = user?.role;
+      session.user.email = user?.email;
+
       return session;
     },
   },

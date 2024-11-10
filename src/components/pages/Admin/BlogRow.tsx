@@ -1,18 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { MoreVertical, Edit, Trash, X } from "lucide-react";
+import { Edit, Trash } from "lucide-react";
 import { Blogs } from "@/types/db";
+import Link from "next/link";
 
 interface BlogRowProps {
   post: Blogs;
-  onEdit: () => void;
-  onDelete: (postId: number) => void;
 }
 
-const BlogRow = ({ post, onEdit, onDelete }: BlogRowProps) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
+const BlogRow = ({ post }: BlogRowProps) => {
   return (
     <tr className="hover:bg-gray-50 border-b text-sm">
       <td className="py-2 px-3 border-r">{post.title}</td>
@@ -20,47 +16,23 @@ const BlogRow = ({ post, onEdit, onDelete }: BlogRowProps) => {
       <td className="py-2 px-3 border-r">
         {new Date(post.created_at).toDateString()}
       </td>
-      <td className="py-2 px-3 relative w-[100px] text-center">
-        <button
-          onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="focus:outline-none"
-        >
-          <MoreVertical className="h-4 w-4" />
-        </button>
-        {/* Dropdown menu */}
-        {dropdownOpen && (
-          <div className="absolute right-0 top-8 w-28 bg-white border border-gray-200 rounded shadow-lg z-10">
-            <div className="flex justify-between items-center px-2 py-1 border-b">
-              <span className="text-xs font-semibold">Actions</span>
-              <button
-                onClick={() => setDropdownOpen(false)}
-                className="text-gray-500 hover:text-gray-700 focus:outline-none"
-              >
-                <X className="h-3 w-3" />
-              </button>
-            </div>
-
-            <button
-              onClick={() => {
-                onEdit();
-                setDropdownOpen(false);
-              }}
-              className="flex items-center px-3 py-1 text-xs text-gray-700 hover:bg-gray-100 w-full border-b"
-            >
-              <Edit className="mr-1 h-3 w-3" /> Edit
-            </button>
-
-            <button
-              onClick={() => {
-                onDelete(post.author_id);
-                setDropdownOpen(false);
-              }}
-              className="flex items-center px-3 py-1 text-xs text-gray-700 hover:bg-gray-100 w-full"
-            >
-              <Trash className="mr-1 h-3 w-3" /> Delete
-            </button>
-          </div>
-        )}
+      <td className="py-2 px-3 text-center w-[100px]">
+        <div className="flex items-center justify-end space-x-2">
+          <Link
+           href={`/admin/all-blogs/edit/${post.id}`}
+            className="text-gray-500 hover:text-gray-700 focus:outline-none"
+          >
+            <Edit className="h-4 w-4" />
+          </Link>
+          <button
+            onClick={() => {
+              // Handle delete action
+            }}
+            className="text-gray-500 hover:text-gray-700 focus:outline-none"
+          >
+            <Trash className="h-4 w-4" />
+          </button>
+        </div>
       </td>
     </tr>
   );

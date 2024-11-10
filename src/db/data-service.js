@@ -4,7 +4,7 @@ export async function getUsers(email) {
   if (!email) return null;
   const { data, error } = await supabase
     .from("users")
-    .select("email , role")
+    .select(" id , email , role")
     .eq("email", email)
     .single();
 

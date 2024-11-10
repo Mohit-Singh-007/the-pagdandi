@@ -1,7 +1,7 @@
 import { BlogPageType } from "@/types/db";
 import BlogRow from "./BlogRow";
 
-const BlogTable = ({ posts, onEdit, onDelete }: BlogPageType) => {
+const BlogTable = ({ posts }: BlogPageType) => {
   return (
     <div className="overflow-x-auto w-full">
       <table className="w-full bg-white border border-gray-200 text-sm">
@@ -15,12 +15,7 @@ const BlogTable = ({ posts, onEdit, onDelete }: BlogPageType) => {
         </thead>
         <tbody>
           {posts.map((post) => (
-            <BlogRow
-              key={post.id}
-              post={post}
-              onEdit={() => onEdit(post.id)}
-              onDelete={() => onDelete(post.id)}
-            />
+            <BlogRow key={post.id} post={post} />
           ))}
         </tbody>
       </table>

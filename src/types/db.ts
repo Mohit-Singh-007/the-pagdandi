@@ -16,8 +16,6 @@ export type Blogs = {
 
 export interface BlogPageType {
   posts: Blogs[];
-  onEdit: (postId: number) => void;
-  onDelete: (postId: number) => void;
 }
 
 export interface BlogPageSingleProp {

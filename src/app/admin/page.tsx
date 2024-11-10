@@ -12,10 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default async function page() {
-  const session = await auth();
-
-  if (session?.user.role !== "admin") {
-    redirect("/unauthorized");
-  }
   return <div>admin page</div>;
 }
