@@ -3,7 +3,6 @@ import Links from "./Component/Links";
 import Logo from "./Component/Logo";
 import Link from "next/link";
 import { LockOpen } from "lucide-react";
-import Button from "../Button/Button";
 
 export default async function Navbar() {
   const session = await auth();
@@ -19,10 +18,11 @@ export default async function Navbar() {
           <img
             src={session.user.image}
             alt={session.user.name as string}
-            className="h-8 rounded-full cursor-pointer"
+            className="h-8 w-10 rounded-full object-cover cursor-pointer bg-black"
             referrerPolicy="no-referrer"
           />
         )}
+
         {session?.user.role === "admin" && (
           <Link
             href={"/admin"}

@@ -12,6 +12,7 @@ export type Blogs = {
   imageURL?: string;
   author_id: number;
   created_at: Date;
+  author: string;
 };
 
 export interface BlogPageType {

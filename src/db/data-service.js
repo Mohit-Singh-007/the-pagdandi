@@ -1,11 +1,10 @@
-import { revalidatePath } from "next/cache";
 import { supabase } from "../lib/supabase";
 
 export async function getUsers(email) {
   if (!email) return null;
   const { data, error } = await supabase
     .from("users")
-    .select(" id , email , role")
+    .select(" id , email , role , name")
     .eq("email", email)
     .single();
 
@@ -16,10 +15,10 @@ export async function getUsers(email) {
   return data;
 }
 
-export async function createUser({ email, provider, role }) {
-  const { data, error } = await supabase.from("users").insert[
-    { email, provider, role: "user" }
-  ];
+export async function createUser({ email, provider, role, name }) {
+  const { data, error } = await supabase
+    .from("users")
+    .insert([{ email, provider, role: "user", name }]);
 
   if (error) {
     return { error: error.message };
@@ -27,19 +26,6 @@ export async function createUser({ email, provider, role }) {
 
   return { message: "User created successfully", user: data };
 }
-
-// export async function getAllBlogs() {
-//   const { data, error } = await supabase
-//     .from("posts")
-//     .select("id , title , slug , description , author_id , created_at");
-
-//   if (error) {
-//     return { error: "Not found" };
-//   }
-
-//   revalidatePath("/blogs");
-//   return data;
-// }
 
 export async function getUserById(userId) {
   const { data, error } = await supabase

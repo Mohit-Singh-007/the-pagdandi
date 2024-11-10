@@ -3,7 +3,7 @@ import { Blogs } from "@/types/db";
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function BlogCard() {
   const blogsData: Blogs[] | { error: string } = await getAllBlogs();
@@ -41,7 +41,7 @@ export default async function BlogCard() {
                 href={`/user/${blog.author_id}`}
                 className="text-xs mt-1 block text-gray-500"
               >
-                By {blog.author_id} •{" "}
+                By {blog.author} •{" "}
                 {new Date(blog.created_at).toLocaleDateString()}
               </Link>
               <div className="mt-2 flex justify-between items-center text-xs text-yellow-600">

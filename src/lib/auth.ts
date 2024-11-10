@@ -11,7 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
 
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user, profile }) {
       try {
         const existingUser = await getUsers(user.email);
 
@@ -23,6 +23,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             email: user.email,
             provider: "Google",
             role: user.role,
+            name: profile?.name,
           });
         }
         return true;
@@ -36,6 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.id = user?.id;
       session.user.role = user?.role;
       session.user.email = user?.email;
+      session.user.name = user?.name;
 
       return session;
     },

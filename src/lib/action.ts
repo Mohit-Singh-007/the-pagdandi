@@ -25,17 +25,40 @@ export async function deleteBlog(blogId: number) {
 }
 
 export async function getAllBlogs() {
-  const { data, error } = await supabase
+  // Fetch all blog posts
+  const { data: blogs, error: blogsError } = await supabase
     .from("posts")
-    .select("id , title , slug , description , author_id , created_at")
+    .select("id, title, slug, description, author_id, created_at")
     .order("created_at", { ascending: false });
 
-  if (error) {
+  if (blogsError) {
     return { error: "Not found" };
   }
 
+  // Collect all unique author_ids from the blogs
+  const authorIds = Array.from(new Set(blogs.map((blog) => blog.author_id)));
+
+  // Fetch all authors at once (only 3 in your case)
+  const { data: authors, error: authorsError } = await supabase
+    .from("users")
+    .select("id, name")
+    .in("id", authorIds);
+
+  if (authorsError) {
+    return { error: "Error fetching authors" };
+  }
+
+  // Create a map of authors for quick lookup
+  const authorsMap = new Map(authors.map((author) => [author.id, author.name]));
+
+  // Attach the author names to each blog
+  const blogsWithAuthors = blogs.map((blog) => {
+    const authorName = authorsMap.get(blog.author_id) || "Unknown Author";
+    return { ...blog, author: authorName };
+  });
+
   revalidatePath("/blogs");
-  return data;
+  return blogsWithAuthors;
 }
 
 export async function getUserById(userId: number) {
