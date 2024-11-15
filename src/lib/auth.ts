@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import { createUser, getUsers } from "@/db/data-service";
+import { getUsers } from "@/db/data-service";
+import { createUser } from "./action";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -18,8 +19,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       try {
         const existingGuest = await getUsers(user.email);
 
-        if (!existingGuest)
-          await createUser({ email: user.email, name: user.name });
+        if (!existingGuest) {
+          await createUser({
+            email: user.email as string,
+            name: user.name as string,
+          });
+        }
 
         return true;
       } catch {

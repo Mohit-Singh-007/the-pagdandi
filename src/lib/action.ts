@@ -1,37 +1,30 @@
 "use server";
 
-import { auth, signIn, signOut } from "@/lib/auth";
+import { signIn, signOut } from "@/lib/auth";
 import { supabase } from "./supabase";
-import { revalidatePath } from "next/cache";
 
 export async function signInAction(): Promise<void> {
-  await signIn("google", { redirectTo: "/" });
+  await signIn("google", { redirectTo: "/blogs" });
 }
 
 export async function signOutAction(): Promise<void> {
   await signOut({ redirectTo: "/" });
 }
 
-export async function deleteBlog(blogId: number) {
-  const session = await auth();
-
-  if (!session || session.user.role !== "admin")
-    throw new Error("You must be logged in as an admin");
-
-  const { error } = await supabase.from("posts").delete().eq("id", blogId);
-  if (error) throw new Error("Booking could not be deleted");
-
-  revalidatePath("/admin/all-blogs");
-}
-
-
-export async function getUserById(userId: number) {
+export async function createUser({
+  email,
+  name,
+}: {
+  email: string;
+  name: string;
+}) {
   const { data, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("author_id", userId);
+    .from("users")
+    .insert([{ email, name }]);
 
-  if (error) throw new Error("User can't be fetched");
+  if (error) {
+    throw new Error("User can't be created" + error.message);
+  }
 
   return data;
 }

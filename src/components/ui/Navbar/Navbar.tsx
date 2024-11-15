@@ -1,12 +1,9 @@
 import { auth } from "@/lib/auth";
 import Links from "./Component/Links";
 import Logo from "./Component/Logo";
-import Link from "next/link";
-import { LockOpen } from "lucide-react";
 
 export default async function Navbar() {
   const session = await auth();
-  console.log(session);
 
   return (
     <nav className="border-b flex p-4 gap-20 items-center justify-between bg-[#000]">
@@ -14,7 +11,7 @@ export default async function Navbar() {
       <Links />
 
       <div className="flex items-center gap-2 justify-between md:pr-4">
-        {session?.user.image && (
+        {session?.user?.image && (
           <img
             src={session.user.image}
             alt={session.user.name as string}

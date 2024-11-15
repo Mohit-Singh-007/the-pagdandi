@@ -16,18 +16,6 @@ export async function getUsers(email) {
   return data;
 }
 
-export async function createUser({ email, name }) {
-  const { data, error } = await supabase
-    .from("users")
-    .insert([{ email, name }]);
-
-  if (error) {
-    return { error: error.message };
-  }
-
-  return { message: "User created successfully", user: data };
-}
-
 export async function getBlogsByName(authorName) {
   const decodedAuthorName = decodeURIComponent(authorName); // Decoding the author name
   const { data: blogs, error } = await supabase
@@ -42,8 +30,6 @@ export async function getBlogsByName(authorName) {
 
   return blogs;
 }
-
-export async function addPost() {}
 
 export async function getAllBlogs() {
   const { data: blogs, error } = await supabase
