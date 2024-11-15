@@ -1,18 +1,11 @@
-export interface UserType {
-  email: string;
-  role?: string;
-  password?: string;
-}
-
 export type Blogs = {
   id: number;
   title: string;
-  slug: string;
+  category: string;
   description: string;
-  imageURL?: string;
-  author_id: number;
+  image?: string;
+  author_name: number;
   created_at: Date;
-  author: string;
 };
 
 export interface BlogPageType {

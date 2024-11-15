@@ -22,15 +22,6 @@ export default async function Navbar() {
             referrerPolicy="no-referrer"
           />
         )}
-
-        {session?.user.role === "admin" && (
-          <Link
-            href={"/admin"}
-            className="whitespace-nowrap bg-neutral-100 rounded-lg px-2 py-2"
-          >
-            <LockOpen size={18} />
-          </Link>
-        )}
       </div>
     </nav>
   );

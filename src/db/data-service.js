@@ -4,21 +4,22 @@ export async function getUsers(email) {
   if (!email) return null;
   const { data, error } = await supabase
     .from("users")
-    .select(" id , email , role , name")
+    .select(" id , email , name")
     .eq("email", email)
     .single();
 
   if (error) {
-    return null;
+    console.error(error);
+    throw new Error("Error in getUsers");
   }
 
   return data;
 }
 
-export async function createUser({ email, provider, role, name }) {
+export async function createUser({ email, name }) {
   const { data, error } = await supabase
     .from("users")
-    .insert([{ email, provider, role: "user", name }]);
+    .insert([{ email, name }]);
 
   if (error) {
     return { error: error.message };
@@ -27,15 +28,43 @@ export async function createUser({ email, provider, role, name }) {
   return { message: "User created successfully", user: data };
 }
 
-export async function getUserById(userId) {
-  const { data, error } = await supabase
+export async function getBlogsByName(authorName) {
+  const decodedAuthorName = decodeURIComponent(authorName); // Decoding the author name
+  const { data: blogs, error } = await supabase
     .from("posts")
     .select("*")
-    .eq("author_id", userId);
+    .eq("author_name", decodedAuthorName);
 
-  if (error) throw new Error("User can't be fetched");
+  if (error) {
+    console.error("Error fetching blogs by author:", error);
+    throw new Error("Error in getBlogsByName");
+  }
 
-  return data;
+  return blogs;
 }
 
 export async function addPost() {}
+
+export async function getAllBlogs() {
+  const { data: blogs, error } = await supabase
+    .from("posts")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error) {
+    throw new Error("Cant get all blogs");
+  }
+
+  return blogs;
+}
+
+export async function getAllAuthors() {
+  const { data: authors, error } = await supabase
+    .from("posts")
+    .select("author_name");
+
+  if (error) {
+    throw new Error("Cant get all blogs");
+  }
+
+  return authors;
+}

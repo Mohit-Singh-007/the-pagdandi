@@ -11,38 +11,29 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
 
   callbacks: {
-    async signIn({ user, profile }) {
+    authorized({ auth, request }) {
+      return !!auth?.user;
+    },
+    async signIn({ user, account, profile }) {
       try {
-        const existingUser = await getUsers(user.email);
+        const existingGuest = await getUsers(user.email);
 
-        if (existingUser) {
-          user.role = existingUser.role;
-        } else {
-          user.role = "user";
-          await createUser({
-            email: user.email,
-            provider: "Google",
-            role: user.role,
-            name: profile?.name,
-          });
-        }
+        if (!existingGuest)
+          await createUser({ email: user.email, name: user.name });
+
         return true;
-      } catch (error) {
+      } catch {
         return false;
       }
     },
-
-    async session({ session, token }) {
-      const user = await getUsers(session.user.email);
-      session.user.id = user?.id;
-      session.user.role = user?.role;
-      session.user.email = user?.email;
-      session.user.name = user?.name;
-
+    async session({ session, user }) {
+      const guest = await getUsers(session.user.email);
+      session.user.id = guest?.id;
       return session;
     },
   },
   pages: {
     signIn: "/login",
+    signOut: "/logout",
   },
 });
