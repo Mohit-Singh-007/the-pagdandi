@@ -2,7 +2,7 @@ import BlogCardAuthorName from "@/components/pages/Blogs/BlogCardAuthorName";
 import { getAllAuthors, getBlogsByName } from "@/db/data-service";
 
 export async function generateStaticParams() {
-  const authors = await getAllAuthors(); 
+  const authors = await getAllAuthors();
 
   return authors.map((author) => ({
     slug: author.author_name,

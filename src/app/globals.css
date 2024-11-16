@@ -37,3 +37,40 @@
     transform: rotate(360deg);
   }
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: black; /* Black navigation buttons */
+  color: white;
+  width: 30px; /* Default size */
+  height: 30px; /* Default size */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px; /* Default size */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #444; /* Darker black on hover */
+}
+
+/* Responsive: Make buttons smaller on mobile */
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 20px; /* Smaller size on mobile */
+    height: 20px; /* Smaller size on mobile */
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 16px; /* Smaller font size */
+  }
+}
+
+/* Custom style for pagination dots */
+.swiper-pagination-bullet {
+  background-color: black !important; /* Black dots */
+}

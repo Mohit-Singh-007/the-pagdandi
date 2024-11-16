@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Blogs",
 };
 
-export const revalidate = 0;
+export const revalidate = 300;
 
 export default async function Page() {
   let blogsData: Blogs[] = [];

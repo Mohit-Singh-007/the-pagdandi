@@ -16,11 +16,11 @@ export default async function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
               <Image
                 src={blog.image ? blog.image : "/default-image.jpg"}
                 alt={`Image for ${blog.title}`}
-                width={256}
-                height={144}
                 quality={80}
+                fill
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
+
               {/* Hover Effect: Darken the image */}
               <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none"></div>
             </div>
