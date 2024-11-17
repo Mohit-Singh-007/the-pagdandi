@@ -24,19 +24,17 @@ export default function ContactForm() {
     resolver: zodResolver(contactSchema),
   });
 
-  // baad mai server-actions bnaa do
-  const onSubmit = (data: ContactFormData) => {
+  const onSubmit = async (data: ContactFormData) => {
     console.log("Form Data:", data);
-    // Replace with backend call to handle submission
+    // Add backend API call here
 
-    // if success
-    reset();
+    reset(); // Reset form after successful submission
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-6">
-        <label htmlFor="name" className="block mb-2 text-sm font-medium">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium mb-1">
           Name
         </label>
         <input
@@ -44,7 +42,7 @@ export default function ContactForm() {
           type="text"
           id="name"
           placeholder="Your Name"
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 ${
             errors.name
               ? "border-red-500 focus:ring-red-500"
               : "border-gray-300 focus:ring-blue-500"
@@ -55,8 +53,8 @@ export default function ContactForm() {
         )}
       </div>
 
-      <div className="mb-6">
-        <label htmlFor="email" className="block mb-2 text-sm font-medium">
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
           Email
         </label>
         <input
@@ -64,7 +62,7 @@ export default function ContactForm() {
           type="email"
           id="email"
           placeholder="Your Email"
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 ${
             errors.email
               ? "border-red-500 focus:ring-red-500"
               : "border-gray-300 focus:ring-blue-500"
@@ -75,8 +73,8 @@ export default function ContactForm() {
         )}
       </div>
 
-      <div className="mb-6">
-        <label htmlFor="message" className="block mb-2 text-sm font-medium">
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium mb-1">
           Message
         </label>
         <textarea
@@ -84,7 +82,7 @@ export default function ContactForm() {
           id="message"
           rows={4}
           placeholder="Your Message"
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 border rounded-md focus:ring-2 ${
             errors.message
               ? "border-red-500 focus:ring-red-500"
               : "border-gray-300 focus:ring-blue-500"

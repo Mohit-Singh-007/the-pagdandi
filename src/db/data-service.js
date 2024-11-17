@@ -54,3 +54,29 @@ export async function getAllAuthors() {
 
   return authors;
 }
+
+export async function getBlogsById(id) {
+  const { data: blogs, error } = await supabase
+    .from("posts")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching blogs by author:", error);
+    throw new Error("Error in getBlogsByName");
+  }
+
+  return blogs;
+}
+
+export async function getAllBlogsId() {
+  const { data: blogs, error } = await supabase.from("posts").select("id");
+
+  if (error) {
+    console.error("Error fetching blogs by author:", error);
+    throw new Error("Error in getBlogsByName");
+  }
+
+  return blogs;
+}

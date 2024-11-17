@@ -4,14 +4,14 @@ import { useState } from "react";
 import { links } from "./Links";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AlignJustify, X } from "lucide-react"; // Import the X icon for closing the menu
+import { AlignJustify, X } from "lucide-react";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const pathName = usePathname();
 
   return (
-    <div className="flex items-center justify-between md:hidden gap-x-2">
+    <div className="flex items-center justify-between md:hidden gap-x-2 z-50">
       {/* Hamburger Menu Icon */}
       <button
         onClick={() => setOpen(!open)}
@@ -32,14 +32,14 @@ export default function Sidebar() {
             <X size={24} className="text-black" />
           </button>
 
-          {/* Links */}
+          {/* Sidebar Links */}
           {links.map((link) => (
             <Link
               href={link.href}
               key={link.label}
               className={`text-sm transition duration-150 ease-in ${
                 pathName === link.href
-                  ? "text-black border-b border-b-black"
+                  ? "text-black border-b border-black"
                   : "hover:text-[#E9C46A]"
               }`}
               onClick={() => setOpen(false)}

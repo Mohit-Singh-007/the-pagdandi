@@ -1,6 +1,16 @@
-import ContactForm from "@/components/pages/Contact/ContactForm";
+import dynamic from "next/dynamic";
+
+const ContactForm = dynamic(
+  () => import("@/components/pages/Contact/ContactForm"),
+  {
+    ssr: false,
+    loading: () => <MiniSpinner />,
+  }
+);
+
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Metadata } from "next";
+import MiniSpinner from "@/components/ui/Spinner/MiniSpinner";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -18,7 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://yourdomain.com/contact-image.jpg", // Add a relevant image URL, like a contact form image
+        url: "https://yourdomain.com/contact-image.jpg",
         width: 1200,
         height: 630,
         alt: "Contact Pagdandi",
@@ -55,7 +65,6 @@ export default function ContactPage() {
           </p>
           <div className="flex items-center gap-4">
             <Phone className="text-2xl" />
-
             <span>+91 12345 67890</span>
           </div>
           <div className="flex items-center gap-4">

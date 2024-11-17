@@ -16,14 +16,14 @@ export default function Links() {
 
   return (
     <>
-      {/* Desktop links */}
+      {/* Desktop Links */}
       <div className="hidden md:flex items-center justify-center gap-5 w-full">
         {links.map((link) => (
           <Link
             href={link.href}
             key={link.label}
             className={`text-white text-sm transition duration-150 ease-in hover:text-[#E9C46A] ${
-              pathName === link.href ? "border-b-2 border-b-[#E9C46A]" : ""
+              pathName === link.href ? "border-b-2 border-[#E9C46A]" : ""
             }`}
           >
             {link.label}

@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Logo() {
   return (
-    <div className="text-2xl font-semibold md:text-4xl">
+    <Link href={"/"} className="text-2xl font-semibold md:text-4xl">
       <Image
         src="/mainLogo.png"
         height={30}
@@ -10,6 +11,6 @@ export default function Logo() {
         alt="logo | Pagdandi"
         className="rounded-full"
       />
-    </div>
+    </Link>
   );
 }

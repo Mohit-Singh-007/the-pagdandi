@@ -1,6 +1,8 @@
 import BlogCardAuthorName from "@/components/pages/Blogs/BlogCardAuthorName";
 import { getAllAuthors, getBlogsByName } from "@/db/data-service";
 
+export const revalidate = 300;
+
 export async function generateStaticParams() {
   const authors = await getAllAuthors();
 

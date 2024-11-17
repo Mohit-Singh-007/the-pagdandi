@@ -37,18 +37,20 @@ export const metadata: Metadata = {
   keywords:
     "about Pagdandi, personal growth, productivity, self-improvement, learning, blog platform",
 };
-
 export default function About() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <section className="flex flex-col md:flex-row items-start p-10 md:p-24 space-y-10 md:space-y-0">
-        <div className="flex-1 space-y-6">
-          <h1 className="text-5xl font-bold text-gray-800">
-            Exploring Life&apos;s{" "}
-            <span className="text-[#E9C46A]">Unbeaten Paths</span>
-          </h1>
+        <article className="flex-1 space-y-6">
+          <header>
+            <h1 className="text-5xl font-bold text-gray-800">
+              Exploring Life&apos;s{" "}
+              <span className="text-[#E9C46A]">Unbeaten Paths</span>
+            </h1>
+          </header>
+
           <div className="flex flex-col md:flex-row items-start space-x-8">
-            <div className="flex-1">
+            <section className="flex-1">
               <p className="text-xl font-semibold text-gray-700">Mohit Singh</p>
               <p className="text-gray-600 leading-relaxed mt-4">
                 Hi, I&apos;m a curious traveler, tech enthusiast, and
@@ -56,9 +58,10 @@ export default function About() {
                 is my space to share mine. I believe each step leads to
                 something new, inspiring those carving their own paths.
               </p>
-              <div className="flex space-x-6 pt-5">
+              <nav className="flex space-x-6 pt-5">
                 <Link
                   href="https://instagram.com"
+                  aria-label="Follow on Instagram"
                   className="flex items-center space-x-2 text-yellow-600 hover:text-yellow-500 transition"
                 >
                   <Instagram className="w-5 h-5" />
@@ -66,17 +69,18 @@ export default function About() {
                 </Link>
                 <Link
                   href="https://youtube.com"
+                  aria-label="Subscribe on YouTube"
                   className="flex items-center space-x-2 text-red-600 hover:text-red-500 transition"
                 >
                   <Youtube className="w-5 h-5" />
                   <span>YouTube</span>
                 </Link>
-              </div>
-            </div>
+              </nav>
+            </section>
             <MyProfile />
           </div>
 
-          <div className="pt-4 md:pt-10">
+          <section className="pt-4 md:pt-10">
             <h3 className="text-2xl font-semibold text-gray-800">
               What sets me apart?
             </h3>
@@ -95,8 +99,8 @@ export default function About() {
               connect with me on Instagram or YouTube. Got a question or just
               want to say hello? Reach out! I&apos;d love to hear from you.
             </p>
-          </div>
-        </div>
+          </section>
+        </article>
       </section>
     </div>
   );

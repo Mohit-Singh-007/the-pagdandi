@@ -1,84 +1,52 @@
 "use client";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/pagination";
-
 import "swiper/css/autoplay";
+import Image from "next/image";
+
+const slides = [
+  { src: "/first.jpg", alt: "lush mountains", brightness: "brightness-75" },
+  { src: "/second.jpg", alt: "lush mountains", brightness: "brightness-50" },
+  { src: "/third.jpg", alt: "lush mountains", brightness: "brightness-50" },
+  { src: "/fourth.jpg", alt: "lush mountains", brightness: "brightness-75" },
+  { src: "/fifth.jpg", alt: "lush mountains", brightness: "brightness-50" },
+  { src: "/sixth.jpg", alt: "lush mountains", brightness: "brightness-75" },
+];
 
 export default function Slider() {
   return (
-    <div className="relative max-w-full mx-auto mt-8 px-4 overflow-hidden">
-      <Swiper
-        slidesPerView={1} // Always show 1 slide
-        spaceBetween={10} // Smaller space between slides
-        loop={true}
-        pagination={{
-          clickable: true,
-          renderBullet: (index, className) => {
-            return `<span class="${className} bg-black"></span>`; // Black dots
-          },
-        }}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        navigation={{
-          enabled: true,
-        }}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper"
-        style={{
-          height: "300px", // Adjusted height
-        }}
-      >
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 1</h2>
+    <Swiper
+      slidesPerView={1}
+      spaceBetween={10}
+      loop
+      pagination={{
+        clickable: true,
+        renderBullet: (index, className) =>
+          `<span class="${className} bg-black"></span>`,
+      }}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      modules={[Pagination, Autoplay]}
+      style={{ height: "350px", marginTop: "10px" }}
+    >
+      {slides.map((slide, index) => (
+        <SwiperSlide key={index}>
+          <div className="relative w-full h-full">
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className={`object-cover w-full h-full ${slide.brightness}`}
+              priority
+            />
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white via-transparent to-transparent"></div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 2</h2>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 3</h2>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 4</h2>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 5</h2>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 6</h2>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 7</h2>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 8</h2>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center items-center h-full bg-gray-200 p-2 rounded-lg shadow-sm">
-            <h2 className="text-sm font-bold text-center">Slide 9</h2>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+      ))}
+    </Swiper>
   );
 }
