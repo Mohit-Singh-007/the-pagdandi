@@ -4,7 +4,7 @@ import BlogCard from "@/components/pages/Blogs/BlogCard";
 
 async function fetchLatestBlogs() {
   try {
-    const latestBlogs = await getAllBlogs();
+    const { blogs: latestBlogs } = await getAllBlogs();
     return latestBlogs.slice(0, 2);
   } catch (error) {
     return [];

@@ -32,15 +32,19 @@ export async function getBlogsByName(authorName) {
 }
 
 export async function getAllBlogs() {
-  const { data: blogs, error } = await supabase
+  const {
+    data: blogs,
+    error,
+    count,
+  } = await supabase
     .from("posts")
-    .select("*")
+    .select("*", { count: "exact" })
     .order("created_at", { ascending: false });
   if (error) {
     throw new Error("Cant get all blogs");
   }
 
-  return blogs;
+  return { blogs, count };
 }
 
 export async function getAllAuthors() {
@@ -79,4 +83,24 @@ export async function getAllBlogsId() {
   }
 
   return blogs;
+}
+
+export async function getAllBlogsPagination(currentPage, itemsPerPage) {
+  const startIndex = (currentPage - 1) * itemsPerPage;
+
+  const {
+    data: blogs,
+    error,
+    count,
+  } = await supabase
+    .from("posts")
+    .select("*", { count: "exact" })
+    .order("created_at", { ascending: false })
+    .range(startIndex, startIndex + itemsPerPage - 1);
+
+  if (error) {
+    throw new Error("Can't fetch blogs");
+  }
+
+  return { blogs, count };
 }
