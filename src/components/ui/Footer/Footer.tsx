@@ -12,10 +12,10 @@ export default function Footer() {
             Journeys Begin with Words – Start Yours Here.
           </h2>
           <Link
-            href="/contact"
+            href="/login"
             className="bg-[#FDCF09] text-black px-6 py-2 rounded-full hover:bg-[#FFDE4D] transition"
           >
-            Contact Us
+            Join Us
           </Link>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface RecommendedBlogType {
@@ -21,12 +22,13 @@ export default function RecommendedCard({ blog }: RecommendedCardProps) {
     >
       {/* Blog Image */}
       <div className="relative h-48 md:h-40 overflow-hidden rounded-lg">
-        <img
+        <Image
           src={blog.image || "/default-image.jpg"}
           alt={blog.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 60vw, (max-width: 1280px) 50vw, 33vw"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
         />
-        {/* Hover Effect: Darken the image */}
       </div>
 
       {/* Blog Content */}

@@ -31,11 +31,11 @@ export default function Slider() {
         disableOnInteraction: false,
       }}
       modules={[Pagination, Autoplay]}
-      style={{ height: "350px", marginTop: "10px" }}
+      style={{ minHeight: "350px", marginTop: "10px" }}
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-[350px]">
             <Image
               src={slide.src}
               alt={slide.alt}
