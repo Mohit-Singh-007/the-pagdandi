@@ -1,26 +1,29 @@
 import { getAllBlogs } from "@/db/data-service";
-import { Blogs } from "@/types/db";
 import BlogCard from "@/components/pages/Blogs/BlogCard";
 
-async function fetchLatestBlogs() {
-  try {
-    const { blogs: latestBlogs } = await getAllBlogs();
-    return latestBlogs.slice(0, 2);
-  } catch (error) {
-    return [];
-  }
-}
+
+export const revalidate = 60;
+
 
 export default async function LatestBlogs() {
-  const latestBlogs: Blogs[] = await fetchLatestBlogs();
+  try {
+  
+    const { blogs: latestBlogs } = await getAllBlogs();
 
-  return (
-    <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2  gap-8 ">
-        {latestBlogs.map((blog) => (
-          <BlogCard key={blog.id} blogsData={[blog]} />
-        ))}
+    
+    const blogsToDisplay = latestBlogs.slice(0, 2);
+
+    return (
+      <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {blogsToDisplay.map((blog) => (
+            <BlogCard key={blog.id} blogsData={[blog]} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    return <p>No blogs available</p>; 
+  }
 }

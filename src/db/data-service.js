@@ -1,16 +1,14 @@
 import { supabase } from "../lib/supabase";
 
 export async function getUsers(email) {
-  if (!email) return null;
   const { data, error } = await supabase
     .from("users")
-    .select(" id , email , name")
+    .select("id , email")
     .eq("email", email)
     .single();
 
   if (error) {
-    console.error(error);
-    throw new Error("Error in getUsers");
+    return null;
   }
 
   return data;
@@ -24,7 +22,6 @@ export async function getBlogsByName(authorName) {
     .eq("author_name", decodedAuthorName);
 
   if (error) {
-    console.error("Error fetching blogs by author:", error);
     throw new Error("Error in getBlogsByName");
   }
 
