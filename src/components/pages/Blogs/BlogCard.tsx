@@ -6,7 +6,8 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
   return (
     <>
       {blogsData.map((blog) => (
-        <div
+        <Link
+          href={`/blogs/${blog.id}`}
           key={blog.id}
           className="block w-full z-10 border border-gray-200 p-2 shadow-md cursor-pointer hover:shadow-lg transition duration-200 hover:border-gray-300 relative group rounded-md"
         >
@@ -35,20 +36,17 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
             </h2>
           </Link>
 
+          {/* Blog Slug */}
+          <div className="text-xs mt-1 text-gray-500">
+            <span className="bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">
+              {blog.category || "Pagdandi"}
+            </span>
+          </div>
+
           {/* Author Info */}
-          <Link
-            href={`/user/${encodeURIComponent(blog.author_name)}`}
-            className="text-xs mt-1 block text-gray-500"
-          >
+          <div className="text-xs mt-1 block text-gray-500">
             By {blog.author_name} •{" "}
             {new Date(blog.created_at).toLocaleDateString()}
-          </Link>
-
-          {/* Category Tag */}
-          <div className="mt-2 flex justify-between items-center text-xs text-yellow-600">
-            <span className="px-2 py-1 bg-yellow-100 rounded-full">
-              {blog.category}
-            </span>
           </div>
 
           {/* Blog Description */}
@@ -59,7 +57,7 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
                 : blog.description
               : "No description available"}
           </p>
-        </div>
+        </Link>
       ))}
     </>
   );
