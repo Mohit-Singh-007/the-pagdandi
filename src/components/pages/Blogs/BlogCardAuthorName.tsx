@@ -8,7 +8,7 @@ interface BlogCardProps {
 
 const BlogCardAuthorName = ({ blog }: BlogCardProps) => {
   return (
-    <div className="max-w-sm rounded-xl overflow-hidden shadow-xl bg-white hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 relative group">
+    <div className="max-w-sm rounded-xl overflow-hidden shadow-xl bg-white hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 relative group p-2">
       {/* Blog Image */}
       <div className="relative h-48 overflow-hidden">
         <Image

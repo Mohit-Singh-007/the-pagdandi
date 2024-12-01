@@ -64,7 +64,6 @@ export async function getBlogsById(id) {
     .single();
 
   if (error) {
-    console.error("Error fetching blogs by author:", error);
     throw new Error("Error in getBlogsByName");
   }
 
@@ -75,7 +74,6 @@ export async function getAllBlogsId() {
   const { data: blogs, error } = await supabase.from("posts").select("id");
 
   if (error) {
-    console.error("Error fetching blogs by author:", error);
     throw new Error("Error in getBlogsByName");
   }
 
