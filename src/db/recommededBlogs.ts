@@ -17,13 +17,4 @@ export const recommendBlogs = [
     image: "/pagdandi.jpg",
     author_name: "Rajeev",
   },
-  {
-    id: 3,
-    title: "The Spirit of Mountain Life",
-    slug: "pagdandi again once more",
-    description:
-      "पहाड़ की जिंदगी एक अनुशासन से भरी है, जिसमें कठिनाई भी है और संतोष भी...",
-    image: "/pagdandi.jpg",
-    author_name: "Sunita",
-  },
 ];

@@ -18,13 +18,13 @@ export default async function Page() {
         <Slider />
       </div>
 
-      <section className="w-full max-w-6xl px-4 py-6 flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/2 w-full">
+      <section className="w-full max-w-6xl px-4 py-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="w-full">
           <h2 className="text-xl font-semibold">Latest</h2>
           <LatestBlogs />
         </div>
 
-        <div className="md:w-1/2 w-full">
+        <div className="w-full">
           <h2 className="text-xl font-semibold">Recommended</h2>
           <RecommendedBlogs />
         </div>
