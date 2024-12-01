@@ -29,12 +29,12 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
           </div>
 
           {/* Blog Content */}
-          <Link href={`/blogs/${blog.id}`} className="py-2">
+          <div className="py-2">
             {/* Blog Title */}
             <h2 className="text-sm font-semibold text-gray-800 group-hover:text-yellow-500 transition-colors duration-300">
               {blog.title || "Untitled Blog"}
             </h2>
-          </Link>
+          </div>
 
           {/* Blog Slug */}
           <div className="text-xs mt-1 text-gray-500">
