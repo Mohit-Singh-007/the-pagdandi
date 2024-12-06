@@ -17,7 +17,6 @@ export default async function Page({
   const currentPage = Number(searchParams.page) || 1;
   const itemsPerPage = 6;
 
-  // Fetch blogs for the current page
   const { blogs: blogsData, count } = await getAllBlogsPagination(
     currentPage,
     itemsPerPage
@@ -29,10 +28,8 @@ export default async function Page({
     );
   }
 
-  // Calculate total number of pages
   const pageCount = Math.ceil(count / itemsPerPage);
 
-  // Calculate URLs for pagination
   const prevPageUrl = currentPage > 1 ? `?page=${currentPage - 1}` : null;
   const nextPageUrl =
     currentPage < pageCount ? `?page=${currentPage + 1}` : null;

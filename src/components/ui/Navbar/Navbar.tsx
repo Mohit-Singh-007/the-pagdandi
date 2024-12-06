@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 import Links from "./Component/Links";
 import Logo from "./Component/Logo";
-import Sidebar from "./Component/Sidebar"; // Import Sidebar
+import Sidebar from "./Component/Sidebar";
 
 export default async function Navbar() {
   const session = await auth();

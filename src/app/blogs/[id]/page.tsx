@@ -44,7 +44,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
     return notFound();
   }
 
-  // Sanitize HTML content using DOMPurify
   const sanitizedDescription = DOMPurify.sanitize(blog.description);
 
   return (
@@ -63,7 +62,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
           {blog.title}
         </h1>
 
-        {/* Render sanitized HTML content */}
         <div
           className="space-y-4 text-sm text-gray-700 leading-loose"
           dangerouslySetInnerHTML={{ __html: sanitizedDescription }}

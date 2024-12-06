@@ -4,7 +4,6 @@ export default function MyProfile() {
   return (
     <div className="flex justify-center items-center w-full mt-5">
       <div className="relative w-full max-w-md h-72 sm:h-96 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
-        {/* Profile Image */}
         <Image
           src="/profile-min.jpg"
           alt="Profile Image"
@@ -12,7 +11,7 @@ export default function MyProfile() {
           className="absolute inset-0 w-full h-full object-cover"
           quality={70}
         />
-        {/* Quote Section */}
+
         <blockquote className="absolute bottom-0 left-0 right-0 p-4 bg-white bg-opacity-80 backdrop-blur-sm rounded-t-lg">
           <p className="text-lg italic text-gray-700">
             &ldquo;The journey is the destination.&rdquo;

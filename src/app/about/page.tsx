@@ -13,7 +13,6 @@ export default function About() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <section className="flex flex-col md:flex-row items-start p-6 md:p-24 space-y-10 md:space-y-0">
-        {/* Main Article */}
         <article className="flex-1 space-y-6">
           <header>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
@@ -22,7 +21,6 @@ export default function About() {
             </h1>
           </header>
 
-          {/* Text Content */}
           <div className="space-y-4">
             <p className="text-xl font-semibold text-gray-700">
               Deepanshu Kuwar
@@ -35,7 +33,6 @@ export default function About() {
             </p>
           </div>
 
-          {/* Social Links */}
           <nav className="flex space-x-6 pt-5">
             <Link
               href="https://instagram.com"
@@ -55,7 +52,6 @@ export default function About() {
             </Link>
           </nav>
 
-          {/* Additional Info */}
           <section className="pt-4 md:pt-10">
             <h3 className="text-2xl font-semibold text-gray-800">
               What sets me apart?
@@ -78,7 +74,6 @@ export default function About() {
           </section>
         </article>
 
-        {/* Profile Section */}
         <section className="flex justify-center w-full md:w-1/3">
           <MyProfile />
         </section>

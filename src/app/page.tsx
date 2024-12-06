@@ -6,7 +6,7 @@ const Slider = dynamic(() => import("@/components/pages/Home/Slider"), {
 
 import LatestBlogs from "@/components/pages/Blogs/LatestBlogs";
 import RecommendedBlogs from "@/components/pages/Home/RecommendedBlogs";
-import SliderSkeleton from "@/components/ui/SkeletonLoader";
+import SliderSkeleton from "@/components/ui/Spinner/SkeletonLoader";
 import Image from "next/image";
 
 export default async function Page() {

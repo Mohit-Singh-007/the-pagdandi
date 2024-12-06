@@ -1,18 +1,12 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 
-const contactSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  message: z
-    .string()
-    .min(10, { message: "Message must be at least 10 characters" }),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+type FormData = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 export default function ContactForm() {
   const {
@@ -20,15 +14,14 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-  });
+  } = useForm<FormData>();
 
-  const onSubmit = async (data: ContactFormData) => {
-    console.log("Form Data:", data);
-    // Add backend API call here
-
-    reset(); // Reset form after successful submission
+  const onSubmit = async (data: any) => {
+    console.log("Form submitted:", data);
+    // Simulate an API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    reset();
+    alert("Form submitted successfully!");
   };
 
   return (
@@ -38,7 +31,7 @@ export default function ContactForm() {
           Name
         </label>
         <input
-          {...register("name")}
+          {...register("name", { required: "Name is required" })}
           type="text"
           id="name"
           placeholder="Your Name"
@@ -58,7 +51,13 @@ export default function ContactForm() {
           Email
         </label>
         <input
-          {...register("email")}
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+              message: "Please enter a valid email address",
+            },
+          })}
           type="email"
           id="email"
           placeholder="Your Email"
@@ -78,7 +77,13 @@ export default function ContactForm() {
           Message
         </label>
         <textarea
-          {...register("message")}
+          {...register("message", {
+            required: "Message is required",
+            minLength: {
+              value: 10,
+              message: "Message must be at least 10 characters long",
+            },
+          })}
           id="message"
           rows={4}
           placeholder="Your Message"

@@ -19,8 +19,6 @@ const slides = [
     alt: "lush mountains",
     brightness: "brightness-75",
   },
-  { src: "/fifth-min.jpg", alt: "lush mountains", brightness: "brightness-50" },
-  { src: "/sixth-min.jpg", alt: "lush mountains", brightness: "brightness-75" },
 ];
 
 export default function Slider() {
