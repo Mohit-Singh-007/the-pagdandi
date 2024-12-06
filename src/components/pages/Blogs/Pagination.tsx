@@ -21,8 +21,8 @@ export default function Pagination({
   return (
     <div className="flex items-center justify-between mt-6 w-full">
       <div className="text-gray-700">
-        Showing <span className="font-semibold">{startRange}</span> to{" "}
-        <span className="font-semibold">{endRange}</span> of {count} results
+        <span className="font-semibold">{startRange}</span> -{" "}
+        <span className="font-semibold">{endRange}</span> of {count} blogs
       </div>
 
       <div className="flex gap-4">

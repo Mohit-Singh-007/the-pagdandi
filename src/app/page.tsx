@@ -1,6 +1,12 @@
+import dynamic from "next/dynamic";
+const Slider = dynamic(() => import("@/components/pages/Home/Slider"), {
+  ssr: false,
+  loading: () => <SliderSkeleton />,
+});
+
 import LatestBlogs from "@/components/pages/Blogs/LatestBlogs";
 import RecommendedBlogs from "@/components/pages/Home/RecommendedBlogs";
-import Slider from "@/components/pages/Home/Slider";
+import SliderSkeleton from "@/components/ui/SkeletonLoader";
 
 export default async function Page() {
   return (

@@ -1,9 +1,9 @@
 "use client";
-import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 const slides = [
@@ -41,7 +41,7 @@ export default function Slider() {
               alt={slide.alt}
               fill
               className={`object-cover w-full h-full ${slide.brightness}`}
-              priority
+              priority={index === 0}
             />
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white via-transparent to-transparent"></div>
           </div>

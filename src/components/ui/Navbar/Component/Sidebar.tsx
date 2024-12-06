@@ -11,7 +11,7 @@ export default function Sidebar() {
   const pathName = usePathname();
 
   return (
-    <div className="flex items-center justify-between md:hidden gap-x-2 z-50">
+    <div className="relative md:hidden">
       {/* Hamburger Menu Icon */}
       <button
         onClick={() => setOpen(!open)}
@@ -22,7 +22,7 @@ export default function Sidebar() {
       </button>
 
       {open && (
-        <div className="fixed top-0 right-0 h-full w-1/2 bg-[#FAFAD2] z-10 flex flex-col items-center justify-center gap-10 text-lg">
+        <div className="fixed top-0 right-0 h-full w-3/4 bg-[#FAFAD2] z-50 flex flex-col items-center justify-center gap-10 text-lg shadow-lg">
           {/* Close Button */}
           <button
             onClick={() => setOpen(false)}

@@ -1,9 +1,9 @@
-export default function SliderSkeleton() {
+export default function SkeletonLoader() {
   return (
-    <div className="w-full h-[350px] flex space-x-4 animate-pulse">
-      {Array.from({ length: 5 }).map((_, index) => (
-        <div key={index} className="w-full h-full bg-gray-300 rounded-lg" />
-      ))}
+    <div className="relative w-full h-[350px]">
+      <div className="skeleton w-full h-full"></div>
+
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white via-transparent to-transparent"></div>
     </div>
   );
 }

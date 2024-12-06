@@ -7,51 +7,27 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Learn more about Pagdandi, our mission to inspire and support personal growth, productivity, and self-improvement through insightful articles and resources.",
-  robots: {
-    index: true,
-    follow: true,
-  },
-  openGraph: {
-    title: "About Pagdandi | Your Path to Growth and Learning",
-    description:
-      "Discover the story behind Pagdandi and how we're helping individuals improve their productivity, learning, and self-development with valuable insights and practical tips.",
-    url: "https://yourdomain.com/about",
-    type: "website",
-    images: [
-      {
-        url: "https://yourdomain.com/about-image.jpg", // Add a relevant image URL
-        width: 1200,
-        height: 630,
-        alt: "About Pagdandi - Growth and Learning",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@yourTwitterHandle",
-    title: "About Pagdandi | Your Path to Growth and Learning",
-    description:
-      "Learn more about Pagdandi and our mission to inspire personal growth, productivity, and self-improvement.",
-    images: "https://yourdomain.com/about-image.jpg",
-  },
-  keywords:
-    "about Pagdandi, personal growth, productivity, self-improvement, learning, blog platform",
+  // ... other metadata fields
 };
+
 export default function About() {
   return (
     <div className="bg-gray-50 min-h-screen">
-      <section className="flex flex-col md:flex-row items-start p-10 md:p-24 space-y-10 md:space-y-0">
+      <section className="flex flex-col md:flex-row items-start p-6 md:p-24 space-y-10 md:space-y-0">
         <article className="flex-1 space-y-6">
           <header>
-            <h1 className="text-5xl font-bold text-gray-800">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
               Exploring Life&apos;s{" "}
               <span className="text-[#E9C46A]">Unbeaten Paths</span>
             </h1>
           </header>
 
-          <div className="flex flex-col md:flex-row items-start space-x-8">
+          <div className="flex flex-col md:flex-row items-start md:space-x-8">
+            {/* Left Section */}
             <section className="flex-1">
-              <p className="text-xl font-semibold text-gray-700">Mohit Singh</p>
+              <p className="text-xl font-semibold text-gray-700">
+                Deepanshu Kuwar
+              </p>
               <p className="text-gray-600 leading-relaxed mt-4">
                 Hi, I&apos;m a curious traveler, tech enthusiast, and
                 storyteller at heart. Life is all about journeys, and Pagdandi
@@ -77,7 +53,11 @@ export default function About() {
                 </Link>
               </nav>
             </section>
-            <MyProfile />
+
+            {/* Profile Section */}
+            <section className="w-full md:w-auto flex justify-center">
+              <MyProfile />
+            </section>
           </div>
 
           <section className="pt-4 md:pt-10">

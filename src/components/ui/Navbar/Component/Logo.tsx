@@ -10,6 +10,7 @@ export default function Logo() {
         width={30}
         alt="logo | Pagdandi"
         className="rounded-full"
+        priority
       />
     </Link>
   );

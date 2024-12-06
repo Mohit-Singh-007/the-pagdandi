@@ -30,9 +30,6 @@ export default function Links() {
           </Link>
         ))}
       </div>
-
-      {/* Mobile Sidebar */}
-      <Sidebar />
     </>
   );
 }

@@ -18,7 +18,7 @@ export default function RecommendedCard({ blog }: RecommendedCardProps) {
   return (
     <Link
       href={`/recommended/${encodeURIComponent(blog.slug)}`}
-      className="block w-full z-10 border border-gray-200 p-2 shadow-md cursor-pointer hover:shadow-lg transition duration-200 hover:border-gray-300 relative group rounded-md"
+      className="block w-[20vw] z-10 border border-gray-200 p-2 shadow-md cursor-pointer hover:shadow-lg transition duration-200 hover:border-gray-300 relative group rounded-md"
     >
       {/* Blog Image */}
       <div className="relative h-48 md:h-40 overflow-hidden rounded-lg">
@@ -37,7 +37,7 @@ export default function RecommendedCard({ blog }: RecommendedCardProps) {
       </div>
 
       {/* Blog Content */}
-      <div className="p-1">
+      <div className="p-2">
         {/* Blog Title */}
         <h2 className="text-sm font-semibold text-gray-800 group-hover:text-yellow-500 transition-colors duration-300">
           {blog.title || "Untitled Blog"}
