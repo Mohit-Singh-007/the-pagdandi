@@ -2,12 +2,12 @@ import Image from "next/image";
 
 export default function MyProfile() {
   return (
-    <div className="flex-1 flex justify-center items-start mt-5">
-      <div className="relative w-full h-72 sm:h-96 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+    <div className="flex justify-center items-center w-full mt-5">
+      <div className="relative w-full max-w-md h-72 sm:h-96 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
         {/* Profile Image */}
         <Image
-          src="/profile.jpg" // Replace with your actual image path
-          alt="Travel"
+          src="/profile.jpg"
+          alt="Profile Image"
           fill
           className="absolute inset-0 w-full h-full object-cover"
           quality={70}
