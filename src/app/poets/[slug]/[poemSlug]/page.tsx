@@ -1,4 +1,4 @@
-import { poems } from "../page";
+import { poems } from "@/db/poems";
 
 interface PageParams {
   slug: string;
