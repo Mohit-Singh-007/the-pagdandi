@@ -7,12 +7,20 @@ import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 const slides = [
-  { src: "/first.jpg", alt: "lush mountains", brightness: "brightness-75" },
-  { src: "/second.jpg", alt: "lush mountains", brightness: "brightness-50" },
-  { src: "/third.jpg", alt: "lush mountains", brightness: "brightness-50" },
-  { src: "/fourth.jpg", alt: "lush mountains", brightness: "brightness-75" },
-  { src: "/fifth.jpg", alt: "lush mountains", brightness: "brightness-50" },
-  { src: "/sixth.jpg", alt: "lush mountains", brightness: "brightness-75" },
+  { src: "/first-min.jpg", alt: "lush mountains", brightness: "brightness-75" },
+  {
+    src: "/second-min.jpg",
+    alt: "lush mountains",
+    brightness: "brightness-50",
+  },
+  { src: "/third-min.jpg", alt: "lush mountains", brightness: "brightness-50" },
+  {
+    src: "/fourth-min.jpg",
+    alt: "lush mountains",
+    brightness: "brightness-75",
+  },
+  { src: "/fifth-min.jpg", alt: "lush mountains", brightness: "brightness-50" },
+  { src: "/sixth-min.jpg", alt: "lush mountains", brightness: "brightness-75" },
 ];
 
 export default function Slider() {

@@ -6,7 +6,7 @@ export default function MyProfile() {
       <div className="relative w-full max-w-md h-72 sm:h-96 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
         {/* Profile Image */}
         <Image
-          src="/profile.jpg"
+          src="/profile-min.jpg"
           alt="Profile Image"
           fill
           className="absolute inset-0 w-full h-full object-cover"
