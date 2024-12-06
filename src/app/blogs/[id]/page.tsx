@@ -1,5 +1,5 @@
 import { getBlogsById, getAllBlogsId } from "@/db/data-service";
-
+import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +15,6 @@ export const revalidate = 300;
 
 export async function generateStaticParams() {
   const blogs = await getAllBlogsId();
-
   return blogs.map((blog: any) => ({
     id: blog.id.toString(),
   }));
@@ -45,13 +44,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
     return notFound();
   }
 
-  const descriptionParagraphs = blog.description
-    .split("\n")
-    .map((paragraph: any, index: any) => (
-      <p key={index} className="text-sm text-gray-700 leading-loose">
-        {paragraph.trim()}
-      </p>
-    ));
+  // Sanitize HTML content using DOMPurify
+  const sanitizedDescription = DOMPurify.sanitize(blog.description);
 
   return (
     <div className="max-w-3xl mx-auto p-8 space-y-8">
@@ -60,7 +54,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           src={blog.image}
           alt={blog.title}
           fill
-          className="w-full h-full object-contain md:object-cover rounded-xl shadow-2xl "
+          className="w-full h-full object-contain md:object-cover rounded-xl shadow-2xl"
         />
       </div>
 
@@ -69,7 +63,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
           {blog.title}
         </h1>
 
-        <div className="space-y-4">{descriptionParagraphs}</div>
+        {/* Render sanitized HTML content */}
+        <div
+          className="space-y-4 text-sm text-gray-700 leading-loose"
+          dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+        />
 
         <Link
           href={`/user/${encodeURIComponent(blog.author_name)}`}

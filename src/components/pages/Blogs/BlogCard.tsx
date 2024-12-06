@@ -1,3 +1,4 @@
+import DOMPurify from "isomorphic-dompurify";
 import { Blogs } from "@/types/db";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,9 +20,9 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
               quality={80}
               fill
               sizes="(max-width: 640px) 100vw, 
-               (max-width: 768px) 50vw, 
-               (max-width: 1024px) 33vw, 
-               25vw"
+                     (max-width: 768px) 50vw, 
+                     (max-width: 1024px) 33vw, 
+                     25vw"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
             />
             {/* Hover Effect: Darken the image */}
@@ -50,13 +51,19 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
           </div>
 
           {/* Blog Description */}
-          <p className="text-sm text-gray-700 mt-2">
-            {blog.description
-              ? blog.description.length > 80
-                ? `${blog.description.substring(0, 80)}...`
-                : blog.description
-              : "No description available"}
-          </p>
+          <div className="text-sm text-gray-700 mt-2">
+            {/* Sanitize and render HTML content */}
+            <div
+              className="description-preview"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  blog.description && blog.description.length > 80
+                    ? `${blog.description.substring(0, 80)}...`
+                    : blog.description || "No description available"
+                ),
+              }}
+            />
+          </div>
         </Link>
       ))}
     </>

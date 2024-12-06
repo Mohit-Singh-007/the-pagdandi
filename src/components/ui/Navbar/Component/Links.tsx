@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Sidebar from "./Sidebar";
 
 export const links = [
   { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "/about" },
   { label: "BLOGS", href: "/blogs" },
   { label: "POETS", href: "/poets" },
+  { label: "ABOUT", href: "/about" },
   { label: "CONTACT", href: "/contact" },
 ];
 

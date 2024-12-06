@@ -7,17 +7,27 @@ const Slider = dynamic(() => import("@/components/pages/Home/Slider"), {
 import LatestBlogs from "@/components/pages/Blogs/LatestBlogs";
 import RecommendedBlogs from "@/components/pages/Home/RecommendedBlogs";
 import SliderSkeleton from "@/components/ui/SkeletonLoader";
+import Image from "next/image";
 
 export default async function Page() {
   return (
     <div className="min-h-screen flex flex-col items-center">
-      <section className="py-6 w-full text-center">
-        <h1 className="text-2xl font-bold md:text-4xl">
-          Welcome to <span className="text-[#FDCF09]">Pagdandi</span>
-        </h1>
-        <p className="mt-3 text-sm md:text-lg w-3/4 mx-auto">
-          Discover stories, experiences, and insights one step at a time.
-        </p>
+      <section className="py-6 w-full flex flex-col items-center text-center">
+        <div className="flex justify-center items-center flex-col">
+          <Image
+            src="/pag.png"
+            alt="pagdandi"
+            height={300}
+            width={300}
+            className="h-auto w-auto"
+            priority
+            quality={80}
+          />
+          <p className="mt-2 text-sm md:text-base w-3/4 mx-auto">
+            तुमने देखे होंगे पहाड़ों के खूबसूरत नज़ारे, हमने पहाड़ में, पहाड़
+            को, पहाड़ बनते देखा है |
+          </p>
+        </div>
       </section>
 
       <div className="w-full mt-4 md:mt-8">
