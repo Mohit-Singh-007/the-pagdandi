@@ -8,15 +8,15 @@ const poets = [
     place: "15 मई 2003, बागेश्वर, तिलसारी गाँव",
     description:
       "हिन्दी साहित्य, राजनीतिक शास्त्र व समाज शास्त्र से बी.ए। 'पगडंडी' में कार्यरत व हिन्दी साहित्य में अध्ययनरत्। आकाशवाणी व अन्य मंचों से कविताओं का प्रसारण। प्रमुख काव्य रचनाएं 'तड़पती न्यौली', 'ईजा की महरूम साड़ी' आदि।",
-    image: "/rohit.png",
+    image: "/rohit-min.png",
   },
-  {
-    name: "हिमांशु कुनियाल",
-    place: "22 अप्रैल 1999, चमोली, सरकोट गाँव",
-    description:
-      "कुमाऊँ विश्वविद्यालय से भूगोल में एमए। वर्तमान में अध्ययनरत । आकाशवाणी व अन्य मंचों से कविताओं का प्रसारण।  प्रमुख रचनाएं 'पहाड़ बुलाए तो लौटना पड़ता है', 'कुमर( कांटा)' आदि  ",
-    image: "/himanshu.png",
-  },
+  // {
+  //   name: "हिमांशु कुनियाल",
+  //   place: "22 अप्रैल 1999, चमोली, सरकोट गाँव",
+  //   description:
+  //     "कुमाऊँ विश्वविद्यालय से भूगोल में एमए। वर्तमान में अध्ययनरत । आकाशवाणी व अन्य मंचों से कविताओं का प्रसारण।  प्रमुख रचनाएं 'पहाड़ बुलाए तो लौटना पड़ता है', 'कुमर( कांटा)' आदि  ",
+  //   image: "/himanshu-min.png",
+  // },
 ];
 
 export default function PoetPage() {
@@ -33,8 +33,9 @@ export default function PoetPage() {
               <Image
                 src={poet.image as string}
                 alt={poet.name}
-                width={128} // fixed width
-                height={128} // fixed height
+                width={128}
+                height={128}
+                quality={70}
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
@@ -56,10 +57,9 @@ export default function PoetPage() {
                 </p>
               )}
 
-              {/* View Poems Link */}
               <Link
                 href={`/poets/${encodeURIComponent(poet.name)}`}
-                className="px-6 py-3 mt-2  bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+                className="px-6 py-3 mt-2  bg-[#FDCF09] text-black rounded-lg hover:bg-[#FFDE4D] transition duration-300"
               >
                 View Poems
               </Link>

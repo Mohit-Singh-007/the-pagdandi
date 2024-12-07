@@ -9,7 +9,7 @@ export default function LoginForm() {
         <h2 className="text-2xl font-bold text-center">Login</h2>
         <form action={signInAction}>
           <button className="flex items-center justify-center space-x-3 bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-700 transition duration-300 w-full">
-            <Image src="/google.png" alt="Google Logo" height={50} width={50} />
+            <Image src="/google.svg" alt="Google Logo" height={50} width={50} />
             <span>Sign in with Google</span>
           </button>
         </form>

@@ -1,9 +1,8 @@
-import { getBlogsById, getAllBlogsId } from "@/db/data-service";
+import { getAllBlogsId, getBlogsById } from "@/lib/action";
 import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 interface BlogPageProps {
   params: {
@@ -41,7 +40,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const blog = await getBlogsById(blogId);
 
   if (!blog) {
-    return notFound();
+    return 
   }
 
   const sanitizedDescription = DOMPurify.sanitize(blog.description);

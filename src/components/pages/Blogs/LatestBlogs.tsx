@@ -1,5 +1,5 @@
-import { getAllBlogs } from "@/db/data-service";
 import BlogCard from "@/components/pages/Blogs/BlogCard";
+import { getAllBlogs } from "@/lib/action";
 
 export const revalidate = 60;
 

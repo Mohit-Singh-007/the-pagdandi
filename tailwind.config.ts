@@ -1,13 +1,11 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}", // Adjust based on your project structure
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {}, // Use this to add custom styles if needed
+    extend: {},
   },
-  plugins: [], // No plugins by default
+  plugins: [],
 };
 
 export default config;

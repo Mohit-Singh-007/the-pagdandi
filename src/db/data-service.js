@@ -14,71 +14,9 @@ export async function getUsers(email) {
   return data;
 }
 
-export async function getBlogsByName(authorName) {
-  const decodedAuthorName = decodeURIComponent(authorName); // Decoding the author name
-  const { data: blogs, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("author_name", decodedAuthorName);
 
-  if (error) {
-    throw new Error("Error in getBlogsByName");
-  }
 
-  return blogs;
-}
 
-export async function getAllBlogs() {
-  const {
-    data: blogs,
-    error,
-    count,
-  } = await supabase
-    .from("posts")
-    .select("*", { count: "exact" })
-    .order("created_at", { ascending: false });
-  if (error) {
-    throw new Error("Cant get all blogs");
-  }
-
-  return { blogs, count };
-}
-
-export async function getAllAuthors() {
-  const { data: authors, error } = await supabase
-    .from("posts")
-    .select("author_name");
-
-  if (error) {
-    throw new Error("Cant get all blogs");
-  }
-
-  return authors;
-}
-
-export async function getBlogsById(id) {
-  const { data: blogs, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) {
-    throw new Error("Error in getBlogsByName");
-  }
-
-  return blogs;
-}
-
-export async function getAllBlogsId() {
-  const { data: blogs, error } = await supabase.from("posts").select("id");
-
-  if (error) {
-    throw new Error("Error in getBlogsByName");
-  }
-
-  return blogs;
-}
 
 export async function getAllBlogsPagination(currentPage, itemsPerPage) {
   const startIndex = (currentPage - 1) * itemsPerPage;

@@ -1,5 +1,5 @@
 import BlogCardAuthorName from "@/components/pages/Blogs/BlogCardAuthorName";
-import { getAllAuthors, getBlogsByName } from "@/db/data-service";
+import { getAllAuthors, getBlogsByName } from "@/lib/action";
 
 export const revalidate = 300;
 
