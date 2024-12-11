@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     title: "Contact Us | Pagdandi",
     description:
       "Reach out to Pagdandi for any inquiries, feedback, or collaboration opportunities. Our team is ready to assist you.",
-    url: "https://yourdomain.com/contact",
+    url: "https://www.thepagdandi.com/contact",
     type: "website",
     images: [
       {
-        url: "https://yourdomain.com/contact-image.jpg",
+        url: "https://www.thepagdandi.com",
         width: 1200,
         height: 630,
         alt: "Contact Pagdandi",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Contact Us | Pagdandi",
     description:
       "Have questions or feedback? Contact Pagdandi's team. We are happy to connect with you.",
-    images: "https://yourdomain.com/contact-image.jpg",
+    images: "https://www.thepagdandi.com",
   },
   keywords:
     "contact Pagdandi, contact us, feedback, inquiries, customer support, collaboration",

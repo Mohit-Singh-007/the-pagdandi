@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     title: "Pagdandi | Your Path to Growth and Learning",
     description:
       "Explore insightful articles on productivity, learning, and self-improvement with Pagdandi.",
-    url: "https://yourdomain.com",
+    url: "https://www.thepagdandi.com",
     type: "website",
     images: [
       {
-        url: "https://yourdomain.com/og-image.jpg",
+        url: "https://www.thepagdandi.com",
         width: 800,
         height: 600,
         alt: "Pagdandi Blog Preview",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Pagdandi | Your Path to Growth and Learning",
     description:
       "Explore tips on productivity, self-improvement, and learning on Pagdandi.",
-    images: "https://yourdomain.com/twitter-card-image.jpg",
+    images: "https://www.thepagdandi.com",
   },
   keywords: "productivity, learning, self-improvement, personal growth, blog",
 };

@@ -23,7 +23,7 @@ export default function About() {
 
           <div className="space-y-4">
             <p className="text-xl font-semibold text-gray-700">
-              Deepanshu Kuwar
+              Deepanshu Kunwar
             </p>
             <p className="text-gray-600 leading-relaxed">
               Hi, I&apos;m a curious traveler, tech enthusiast, and storyteller
@@ -35,7 +35,7 @@ export default function About() {
 
           <nav className="flex space-x-6 pt-5">
             <Link
-              href="https://instagram.com"
+              href="https://www.instagram.com/the_pagdandi?igsh=dXlmejJxcDJiam56"
               aria-label="Follow on Instagram"
               className="flex items-center space-x-2 text-yellow-600 hover:text-yellow-500 transition"
             >
@@ -43,7 +43,7 @@ export default function About() {
               <span>Instagram</span>
             </Link>
             <Link
-              href="https://youtube.com"
+              href="https://youtube.com/@pagdandi_official?si=38IxqF7_EqyGXs-N"
               aria-label="Subscribe on YouTube"
               className="flex items-center space-x-2 text-red-600 hover:text-red-500 transition"
             >

@@ -1,5 +1,5 @@
 import { FooterLinks } from "@/util/Links";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -50,8 +50,14 @@ export default function Footer() {
         <div className="flex gap-4 justify-center">
           {[
             { href: "https://www.facebook.com", icon: Facebook },
-            { href: "https://www.instagram.com", icon: Instagram },
-            { href: "https://www.twitter.com", icon: Twitter },
+            {
+              href: "https://www.instagram.com/the_pagdandi?igsh=dXlmejJxcDJiam56",
+              icon: Instagram,
+            },
+            {
+              href: "https://youtube.com/@pagdandi_official?si=38IxqF7_EqyGXs-N",
+              icon: Youtube,
+            },
           ].map(({ href, icon: Icon }, index) => (
             <Link
               key={index}
