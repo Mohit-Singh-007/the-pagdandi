@@ -42,6 +42,7 @@ export default function RecommendedCard({ blog }: RecommendedCardProps) {
         <h2 className="text-sm font-semibold text-gray-800 group-hover:text-yellow-500 transition-colors duration-300">
           {blog.title || "Untitled Blog"}
         </h2>
+
         {/* Author Info */}
         <p className="text-xs mt-2 text-gray-500">By {blog.author_name}</p>
         {/* Blog Description */}
