@@ -40,7 +40,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const blog = await getBlogsById(blogId);
 
   if (!blog) {
-    return 
+    return;
   }
 
   const sanitizedDescription = DOMPurify.sanitize(blog.description);
@@ -68,10 +68,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
         <Link
           href={`/user/${encodeURIComponent(blog.author_name)}`}
-          className="mt-6 text-sm text-gray-500"
+          className="mt-6 text-sm text-gray-700"
         >
-          <p>
-            Author: <span className="font-medium">{blog.author_name}</span>
+          <p className="font-semibold">
+            Author: <span className="font-semibold">{blog.author_name}</span>
           </p>
         </Link>
       </div>
