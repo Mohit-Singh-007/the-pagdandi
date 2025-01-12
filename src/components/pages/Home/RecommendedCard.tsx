@@ -18,7 +18,7 @@ export default function RecommendedCard({ blog }: RecommendedCardProps) {
   return (
     <Link
       href={`/recommended/${encodeURIComponent(blog.slug)}`}
-      className="block w-full md:w-[20vw] z-10 border border-gray-200 p-2 shadow-md cursor-pointer hover:shadow-lg transition duration-200 hover:border-gray-300 relative group rounded-md"
+      className="block w-full  md:w-[20vw] z-10 border border-gray-200 p-2   shadow-md cursor-pointer hover:shadow-lg transition duration-200 hover:border-gray-300 relative group rounded-md"
     >
       {/* Blog Image */}
       <div className="relative h-48 md:h-40 overflow-hidden rounded-lg">
@@ -37,14 +37,19 @@ export default function RecommendedCard({ blog }: RecommendedCardProps) {
       </div>
 
       {/* Blog Content */}
-      <div className="p-2">
+      <div className="py-2">
         {/* Blog Title */}
         <h2 className="text-sm font-semibold text-gray-800 group-hover:text-yellow-500 transition-colors duration-300">
           {blog.title || "Untitled Blog"}
         </h2>
 
+        <div className="text-xs mt-4 text-gray-500">
+          <span className="bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">
+            {blog.slug}
+          </span>
+        </div>
         {/* Author Info */}
-        <p className="text-xs mt-2 text-gray-500">By {blog.author_name}</p>
+        <p className="text-xs mt-1 text-gray-500">By {blog.author_name}</p>
         {/* Blog Description */}
         <p className="text-sm text-gray-700 mt-2">
           {blog.description.length > 80

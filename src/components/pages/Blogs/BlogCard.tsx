@@ -10,7 +10,7 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
         <Link
           href={`/blogs/${blog.id}`}
           key={blog.id}
-          className="block w-full z-10 border border-gray-200 p-2 shadow-md cursor-pointer hover:shadow-lg transition duration-200 hover:border-gray-300 relative group rounded-md"
+          className="block w-full z-10 border border-gray-200 p-2 md:pb-5 shadow-md cursor-pointer hover:shadow-lg transition duration-200 hover:border-gray-300 relative group rounded-md"
         >
           {/* Blog Image */}
           <div className="relative h-48 md:h-40 overflow-hidden rounded-lg">
@@ -45,10 +45,10 @@ export default function BlogCard({ blogsData }: { blogsData: Blogs[] }) {
           </div>
 
           {/* Author Info */}
-          <div className="text-xs mt-1 block text-gray-500">
-            By {blog.author_name} •{" "}
+          <p className="text-xs mt-1 block text-gray-500">
+            By {blog.author_name} •
             {new Date(blog.created_at).toLocaleDateString()}
-          </div>
+          </p>
 
           {/* Blog Description */}
           <div className="text-sm text-gray-700 mt-2">

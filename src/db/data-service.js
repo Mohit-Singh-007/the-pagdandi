@@ -14,10 +14,6 @@ export async function getUsers(email) {
   return data;
 }
 
-
-
-
-
 export async function getAllBlogsPagination(currentPage, itemsPerPage) {
   const startIndex = (currentPage - 1) * itemsPerPage;
 
