@@ -16,8 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Pagdandi",
   },
   description:
-    "Pagdandi is a dynamic blog platform tailored for Indian readers passionate about productivity, learning, and self-improvement. The platform offers insightful articles and practical advice on topics like personalized learning paths, career growth strategies, and enhancing daily routines. With a focus on the Indian context, Pagdandi helps readers discover actionable knowledge to support personal and professional development. Accessible on both desktop and mobile, Pagdandi is your go-to resource for meaningful ideas and tools for growth in the fast-paced world of India.",
-
+    "Pagdandi is a vibrant blog platform rooted in the spirit of the Pahad, offering Indian readers a journey into productivity, learning, and self-improvement. Discover insightful blogs tailored for those seeking to enhance their daily routines, explore personalized growth paths, and embrace the simplicity of Pahadi life. With engaging content on career strategies, life hacks, and practical advice, Pagdandi connects readers to meaningful ideas inspired by the hills. Whether you're in the heart of the city or the serene mountains, Pagdandi is your trusted companion for personal and professional growth, blending the charm of Pahadi wisdom with modern insights.",
   robots: {
     index: true,
     follow: true,
@@ -53,8 +52,7 @@ export const metadata: Metadata = {
     ],
   },
 
-  keywords:
-    "productivity tips, self-improvement strategies, personal growth, career development, learning resources, Indian bloggers, motivation for Indians, India growth mindset, professional success in India, life coaching India, habits for success, growth hacks, digital learning India, success stories India, mindset transformation, work-life balance India, personal development blog, Indian self-help blog, productivity tools, self-help for students, goal setting India, sustainable growth in India",
+  keywords: "blog , pagdandi , The Pagdandi , website , Blogs",
 };
 
 export default function RootLayout({
