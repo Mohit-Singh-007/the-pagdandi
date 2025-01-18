@@ -10,43 +10,51 @@ const montserrat = Montserrat({
   weight: ["300", "500", "700", "900"],
   display: "swap",
 });
-
 export const metadata: Metadata = {
   title: {
     default: "Pagdandi",
     template: "%s | Pagdandi",
   },
   description:
-    "Pagdandi is a dynamic blog platform crafted for those passionate about productivity, learning, and self-improvement. It offers an engaging experience with a range of insightful articles on topics such as personalized learning paths, growth strategies, and practical tips for enhancing daily routines. With an intuitive, user-friendly interface, Pagdandi allows readers to explore curated content designed to inspire and guide them on their journey of personal and professional development. Accessible on both desktop and mobile, Pagdandi is your go-to resource for discovering valuable ideas and actionable knowledge tailored to support growth and productivity.",
+    "Pagdandi is a dynamic blog platform tailored for Indian readers passionate about productivity, learning, and self-improvement. The platform offers insightful articles and practical advice on topics like personalized learning paths, career growth strategies, and enhancing daily routines. With a focus on the Indian context, Pagdandi helps readers discover actionable knowledge to support personal and professional development. Accessible on both desktop and mobile, Pagdandi is your go-to resource for meaningful ideas and tools for growth in the fast-paced world of India.",
 
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Pagdandi | Your Path to Growth and Learning",
+    title: "Pagdandi | Your Path to Growth and Learning in India",
     description:
-      "Explore insightful articles on productivity, learning, and self-improvement with Pagdandi.",
+      "Discover productivity tips, self-improvement strategies, and learning insights tailored for India with Pagdandi.",
     url: "https://www.thepagdandi.com",
-    type: "website",
     images: [
       {
-        url: "https://www.thepagdandi.com",
-        width: 800,
-        height: 600,
+        url: "https://www.thepagdandi.com/opengraph-image.png",
+        width: 1200,
+        height: 630,
         alt: "Pagdandi Blog Preview",
       },
     ],
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@yourTwitterHandle",
-    title: "Pagdandi | Your Path to Growth and Learning",
+    site: "thepagdandi.com",
+    title: "Pagdandi | Your Path to Growth and Learning in India",
     description:
-      "Explore tips on productivity, self-improvement, and learning on Pagdandi.",
-    images: "https://www.thepagdandi.com",
+      "Explore productivity and self-improvement tips focused on India with Pagdandi.",
+    images: [
+      {
+        url: "https://www.thepagdandi.com/twitter-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Pagdandi Blog Twitter Preview",
+      },
+    ],
   },
-  keywords: "productivity, learning, self-improvement, personal growth, blog",
+
+  keywords:
+    "productivity tips, self-improvement strategies, personal growth, career development, learning resources, Indian bloggers, motivation for Indians, India growth mindset, professional success in India, life coaching India, habits for success, growth hacks, digital learning India, success stories India, mindset transformation, work-life balance India, personal development blog, Indian self-help blog, productivity tools, self-help for students, goal setting India, sustainable growth in India",
 };
 
 export default function RootLayout({

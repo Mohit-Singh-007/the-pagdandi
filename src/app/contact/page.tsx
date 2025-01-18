@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.thepagdandi.com",
+        url: "https://www.thepagdandi.com/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Contact Pagdandi",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Contact Us | Pagdandi",
     description:
       "Have questions or feedback? Contact Pagdandi's team. We are happy to connect with you.",
-    images: "https://www.thepagdandi.com",
+    images: "https://www.thepagdandi.com/twitter-image.png",
   },
   keywords:
     "contact Pagdandi, contact us, feedback, inquiries, customer support, collaboration",
