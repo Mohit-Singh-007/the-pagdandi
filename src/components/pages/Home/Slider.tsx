@@ -23,15 +23,17 @@ export default function Slider() {
         disableOnInteraction: false,
       }}
       modules={[Pagination, Autoplay]}
-      style={{ minHeight: "400px", marginTop: "10px" }}
+      className="w-screen h-screen"
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="relative w-full md:h-[400px] h:[350px]">
+          <div className="relative w-screen h-screen">
             <Image
               src={slide.src}
               alt={slide.alt}
-              fill
+              layout="intrinsic"
+              width={1920}
+              height={1080}
               className={`object-cover w-full h-full ${slide.brightness}`}
               priority={index === 0}
             />

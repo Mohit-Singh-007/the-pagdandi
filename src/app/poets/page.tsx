@@ -26,7 +26,7 @@ const poets = [
   {
     name: "हेमंत बिष्ट",
     place: "28 जून 1957, नैनीताल ",
-    image: "/hament.jpg",
+    image: "/hemant.jpg",
   },
 ];
 
