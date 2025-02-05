@@ -1,14 +1,9 @@
 export const slides = [
-  { src: "/first-min.jpg", alt: "lush mountains", brightness: "brightness-75" },
+  { src: "/slider3.jpg", alt: "lush mountains", brightness: "" },
   {
-    src: "/second-min.jpg",
+    src: "/slider4.png",
     alt: "lush mountains",
     brightness: "brightness-50",
   },
-  { src: "/third-min.jpg", alt: "lush mountains", brightness: "brightness-50" },
-  {
-    src: "/fourth-min.jpg",
-    alt: "lush mountains",
-    brightness: "brightness-75",
-  },
+  { src: "/slider5.jpg", alt: "lush mountains", brightness: "" },
 ];

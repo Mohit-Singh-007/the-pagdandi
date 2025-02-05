@@ -65,15 +65,15 @@ export default function ContactPage() {
           </p>
           <div className="flex items-center gap-4">
             <Phone className="text-2xl" />
-            <span>+91 12345 67890</span>
+            <span>+91 78199 37882</span>
           </div>
           <div className="flex items-center gap-4">
             <Mail className="text-2xl" />
-            <span>info@pagdandi.com</span>
+            <span>rohitbhatt7819@gmail.com</span>
           </div>
           <div className="flex items-center gap-4">
             <MapPin className="text-2xl" />
-            <span>Bhimtal, Uttarakhand, India</span>
+            <span>Haldwani, Uttarakhand, India</span>
           </div>
         </div>
 
