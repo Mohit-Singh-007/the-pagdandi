@@ -1,6 +1,5 @@
 export const slides = [
   { src: "/slider5.jpg", alt: "lush mountains", brightness: "brightness-100" },
-
   { src: "/slider3.jpg", alt: "lush mountains", brightness: "brightness-90" },
   {
     src: "/slider4.png",

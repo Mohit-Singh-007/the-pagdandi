@@ -27,7 +27,7 @@ export default function Slider() {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="relative w-full md:h-[400px] h:[350px]">
+          <div className="relative w-full md:h-[400px] h-[350px]">
             <Image
               src={slide.src}
               alt={slide.alt}
