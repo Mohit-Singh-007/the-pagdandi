@@ -23,9 +23,9 @@ export default async function Page() {
 
       <section className="py-6 w-full flex flex-col items-center text-center">
         <div className="flex justify-center items-center flex-col">
-          <p className="mt-4 font-semibold text-xl md:text-4xl md:leading-[3rem] w-full md:w-3/4 ">
-            तुमने देखे होंगे पहाड़ों के खूबसूरत नज़ारे, हमने पहाड़ में, पहाड़
-            को, पहाड़ बनते देखा है
+          <p className="mt-4 font-semibold text-xl flex flex-col md:text-4xl md:leading-[3rem] w-full  ">
+            तुमने देखे होंगे पहाड़ों के खूबसूरत नज़ारे,{" "}
+            <span>हमने पहाड़ में, पहाड़ को, पहाड़ बनते देखा है</span>
           </p>
         </div>
       </section>

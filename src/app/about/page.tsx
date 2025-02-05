@@ -15,7 +15,7 @@ export default function About() {
       <section className="flex flex-col md:flex-row items-start p-6 md:p-24 space-y-10 md:space-y-0">
         <article className="flex-1 space-y-6">
           <header>
-            <h1 className="text-4xl md:text-5xl font-bold text-black">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-black">
               पहाड़ और <span className="text-[#000000]">पगडंडी</span>
             </h1>
           </header>
@@ -61,27 +61,6 @@ export default function About() {
               <span>YouTube</span>
             </Link>
           </nav>
-
-          <section className="pt-4 md:pt-10">
-            <h3 className="text-2xl font-semibold text-gray-800">
-              What sets me apart?
-            </h3>
-            <p className="text-gray-600 leading-relaxed mt-2">
-              Authenticity matters: I believe in staying real, no filters, and
-              no shortcuts.
-            </p>
-            <p className="text-gray-600 leading-relaxed mt-2">
-              Growth mindset: Every failure is just another step forward.
-            </p>
-            <p className="text-gray-600 leading-relaxed mt-2">
-              Community-focused: Life is better when we learn from each other.
-            </p>
-            <p className="text-gray-600 leading-relaxed mt-4">
-              Let&apos;s walk this path together! If you enjoy reading my posts,
-              connect with me on Instagram or YouTube. Got a question or just
-              want to say hello? Reach out! I&apos;d love to hear from you.
-            </p>
-          </section>
         </article>
 
         <section className="flex justify-center w-full md:w-1/3">
