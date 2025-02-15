@@ -23,7 +23,7 @@ export default function Slider() {
         disableOnInteraction: false,
       }}
       modules={[Pagination, Autoplay]}
-      style={{ minHeight: "400px", marginTop: "10px" }}
+      style={{ minHeight: "400px" }}
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
@@ -36,7 +36,7 @@ export default function Slider() {
               priority={index === 0}
             />
           </div>
-          <div className="absolute top-0 left-0 w-full h-1/5 bg-gradient-to-b from-white via-transparent to-transparent"></div>
+          <div className="absolute top-0 left-0 w-full h-1/5 bg-gradient-to-b from-black via-transparent to-transparent"></div>
         </SwiperSlide>
       ))}
     </Swiper>

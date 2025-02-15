@@ -17,7 +17,7 @@ import SliderSkeleton from "@/components/ui/Spinner/SkeletonLoader";
 export default async function Page() {
   return (
     <div className="min-h-screen flex flex-col items-center">
-      <div className="w-full mt-4 md:mt-8">
+      <div className="w-full">
         <Slider />
       </div>
 

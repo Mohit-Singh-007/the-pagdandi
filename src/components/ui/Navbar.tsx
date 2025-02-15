@@ -7,7 +7,7 @@ export default async function Navbar() {
   const session = await auth();
 
   return (
-    <nav className="flex p-4 items-center justify-between bg-gradient-to-b from-black via-80% via-black to-transparent">
+    <nav className="flex p-4 items-center justify-between bg-black">
       <Logo />
 
       {/* Links for Desktop */}
